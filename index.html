@@ -352,7 +352,655 @@ body{overflow:visible;background:#fff}
 #toasts{right:10px;top:72px}
 .quoteCard{padding:32px 20px}
 }
+
+/* =========================================================
+   LAB MAYA — MODERN GEN Z UI
+   Visual refresh only: preserves existing HTML/JS behavior.
+   ========================================================= */
+:root{
+  --bg:#050816;
+  --panel:rgba(12,18,38,.72);
+  --panel2:rgba(17,25,49,.78);
+  --line:rgba(157,188,255,.14);
+  --line2:rgba(157,188,255,.28);
+  --tx:#f3f7ff;
+  --tx2:#a9b7d2;
+  --tx3:#687795;
+  --teal:#48f5d0;
+  --amber:#ffd166;
+  --red:#ff6b8a;
+  --green:#5df0a5;
+  --violet:#9d7cff;
+  --blue:#65b8ff;
+  --fd:'Chakra Petch',system-ui,sans-serif;
+  --fb:'Sora',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --r:18px;
+  --glow:0 0 0 1px rgba(72,245,208,.03),0 18px 55px rgba(0,0,0,.28);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(900px 520px at 8% 4%,rgba(101,184,255,.10),transparent 60%),
+    radial-gradient(850px 520px at 92% 92%,rgba(157,124,255,.10),transparent 60%),
+    #050816;
+  color:var(--tx);
+  letter-spacing:-.01em;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 92%);
+}
+
+.page{background:transparent}
+
+/* --- Header --- */
+#hdr{
+  height:68px;
+  padding:0 20px;
+  gap:14px;
+  border-bottom:1px solid rgba(157,188,255,.12);
+  background:rgba(5,8,22,.74);
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:0 10px 35px rgba(0,0,0,.14);
+}
+.hT{
+  display:flex;align-items:center;gap:9px;
+  font-size:14px;letter-spacing:1.2px;
+}
+.hdrLogo{
+  width:20px;height:20px;flex:0 0 20px;
+  object-fit:contain;border-radius:5px;
+  filter:drop-shadow(0 0 8px rgba(72,245,208,.28));
+}
+.hU b{font-size:12.5px}
+.hP{gap:10px}
+.pbar{
+  width:150px;height:8px;border-radius:99px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(157,188,255,.12);
+}
+.pbar>div{
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+  box-shadow:0 0 12px rgba(72,245,208,.42);
+}
+.hC button,#burger{
+  border-color:rgba(157,188,255,.16);
+  background:rgba(255,255,255,.035);
+  transition:.2s ease;
+}
+.hC button:hover,#burger:hover{
+  transform:translateY(-1px);
+  border-color:rgba(72,245,208,.42);
+  background:rgba(72,245,208,.07);
+}
+
+/* --- Sidebar / app navigation --- */
+#sidebar{
+  width:104px;
+  padding:14px 8px;
+  gap:5px;
+  background:rgba(7,11,27,.84);
+  border-right:1px solid rgba(157,188,255,.11);
+  backdrop-filter:blur(24px) saturate(150%);
+  -webkit-backdrop-filter:blur(24px) saturate(150%);
+  box-shadow:12px 0 45px rgba(0,0,0,.12);
+}
+.sblo{
+  height:48px;
+  padding:4px 0 10px;
+  margin-bottom:9px;
+  border-bottom:1px solid rgba(157,188,255,.11);
+}
+.sblo img{
+  width:20px;height:20px;
+  object-fit:contain;
+  border-radius:5px;
+  filter:drop-shadow(0 0 9px rgba(72,245,208,.28));
+}
+.nvi{
+  position:relative;
+  min-height:54px;
+  padding:8px 4px;
+  border:1px solid transparent;
+  border-radius:14px;
+  color:#91a1bf;
+  transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease;
+}
+.nvi .ic{
+  font-size:20px;
+  line-height:20px;
+  filter:saturate(.9);
+  transition:transform .18s ease;
+}
+.nvi .lb{
+  display:block;
+  font-size:9px;
+  line-height:1.2;
+  letter-spacing:.15px;
+  opacity:.86;
+}
+.nvi:hover{
+  transform:translateY(-1px);
+  color:var(--tx);
+  background:rgba(255,255,255,.045);
+  border-color:rgba(157,188,255,.10);
+}
+.nvi:hover .ic{transform:scale(1.08)}
+.nvi.active{
+  color:var(--teal);
+  background:linear-gradient(145deg,rgba(72,245,208,.13),rgba(101,184,255,.055));
+  border-color:rgba(72,245,208,.18);
+  box-shadow:inset 0 0 20px rgba(72,245,208,.035),0 7px 22px rgba(0,0,0,.16);
+}
+.nvi.active::before{
+  content:"";
+  position:absolute;left:-8px;top:50%;
+  width:3px;height:24px;
+  transform:translateY(-50%);
+  border-radius:0 5px 5px 0;
+  background:linear-gradient(var(--blue),var(--teal));
+  box-shadow:0 0 12px rgba(72,245,208,.55);
+}
+.nvi.out{border-top-color:rgba(255,107,138,.16)}
+.sbft{opacity:.7}
+
+/* --- Main content --- */
+#appContent{
+  padding:26px clamp(16px,3.2vw,44px) 58px;
+  background:
+    radial-gradient(700px 320px at 50% -10%,rgba(101,184,255,.045),transparent 70%);
+}
+.view{max-width:1120px}
+.vT{
+  font-size:clamp(21px,3vw,30px);
+  letter-spacing:.2px;
+  margin-bottom:7px;
+}
+.vT::before{
+  width:7px;height:30px;
+  border-radius:99px;
+  background:linear-gradient(180deg,var(--blue),var(--teal));
+  box-shadow:0 0 16px rgba(72,245,208,.35);
+}
+.vS{
+  max-width:820px;
+  color:#93a3bf;
+  margin-bottom:22px;
+}
+
+/* --- Cards / surfaces --- */
+.card,.ctl,.step,.modal,.quoteCard,.regc{
+  background:
+    linear-gradient(145deg,rgba(20,29,57,.78),rgba(9,15,32,.72));
+  border:1px solid rgba(157,188,255,.12);
+  border-radius:var(--r);
+  box-shadow:var(--glow);
+  backdrop-filter:blur(18px) saturate(135%);
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+}
+.card{
+  padding:21px;
+  position:relative;
+  overflow:hidden;
+}
+.card::after{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.025),transparent 38%);
+}
+.card h3{font-size:15px;letter-spacing:.2px}
+.card+.card{margin-top:17px}
+.muted{color:#9baac5}
+.idc .cell,.mini div,.mrow2,.tj{
+  background:rgba(3,8,21,.34);
+  border-color:rgba(157,188,255,.11);
+  border-radius:13px;
+}
+.idc .cell:hover,.mini div:hover{
+  border-color:rgba(72,245,208,.2);
+  background:rgba(72,245,208,.035);
+}
+
+/* --- Hero --- */
+.hero{padding:42px 18px}
+.kick{
+  background:rgba(72,245,208,.055);
+  border-color:rgba(72,245,208,.24);
+  box-shadow:0 0 28px rgba(72,245,208,.06);
+  letter-spacing:3px;
+}
+.hero h1{
+  letter-spacing:-1px;
+  background:linear-gradient(110deg,#fff 12%,#b9c8ff 46%,#58f3d0 88%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  filter:drop-shadow(0 8px 28px rgba(0,0,0,.35));
+}
+.hero h1 em{
+  background:linear-gradient(90deg,var(--teal),var(--blue));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h2{color:#9eacc7}
+.hero .tag{color:var(--amber);letter-spacing:1px}
+
+/* --- Buttons --- */
+.btn{
+  border:1px solid rgba(157,188,255,.16);
+  background:rgba(255,255,255,.045);
+  border-radius:13px;
+  padding:11px 17px;
+  box-shadow:0 7px 18px rgba(0,0,0,.14);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(72,245,208,.38);
+  box-shadow:0 10px 25px rgba(0,0,0,.2),0 0 20px rgba(72,245,208,.05);
+}
+.btn.pri{
+  background:linear-gradient(135deg,#48f5d0,#55dff2);
+  border-color:transparent;
+  color:#031b19;
+  box-shadow:0 8px 24px rgba(72,245,208,.18);
+}
+.btn.amb{
+  background:linear-gradient(135deg,#ffd166,#ffb454);
+  border-color:transparent;
+  color:#2a1800;
+}
+.btn.danger{background:rgba(255,107,138,.045)}
+.btn.sm{padding:8px 12px}
+
+/* --- Interactive controls --- */
+.ltabs{gap:9px}
+.ltab{
+  border-color:rgba(157,188,255,.13);
+  background:rgba(255,255,255,.035);
+  border-radius:12px;
+  transition:.18s ease;
+}
+.ltab:hover:not(:disabled){
+  transform:translateY(-1px);
+  border-color:rgba(72,245,208,.28);
+}
+.ltab.active{
+  background:linear-gradient(135deg,var(--teal),#62d9f6);
+  border-color:transparent;
+  box-shadow:0 7px 22px rgba(72,245,208,.16);
+}
+.eq{
+  background:rgba(255,209,102,.055);
+  border-color:rgba(255,209,102,.20);
+  border-radius:11px;
+}
+.sld input{accent-color:var(--teal)}
+.simcv{
+  border-color:rgba(157,188,255,.14);
+  border-radius:16px;
+  box-shadow:inset 0 0 35px rgba(0,0,0,.18),0 14px 30px rgba(0,0,0,.2);
+}
+
+/* --- Progress / badges / tables --- */
+.hzid span,.ciri span{
+  border-color:rgba(157,188,255,.13);
+  background:rgba(255,255,255,.025);
+  border-radius:99px;
+}
+.hzs{gap:12px}
+.hzb{
+  background:linear-gradient(145deg,rgba(20,29,57,.72),rgba(7,13,28,.66));
+  border-color:rgba(157,188,255,.11);
+  border-radius:15px;
+}
+.pbar{box-shadow:inset 0 0 10px rgba(0,0,0,.25)}
+.toast{
+  background:rgba(10,17,36,.94);
+  border-color:rgba(157,188,255,.18);
+  box-shadow:0 18px 45px rgba(0,0,0,.35);
+  backdrop-filter:blur(16px);
+}
+
+/* --- Modals / overlay --- */
+.ovl,#modalWrap,#outModal,#quoteWrap{
+  background:rgba(2,5,16,.74);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.quoteCard{box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 50px rgba(72,245,208,.05)}
+.quoteCard h2{color:var(--amber)}
+
+/* --- Mobile --- */
+@media (max-width:1024px){
+  #sidebar{
+    width:104px;
+    background:rgba(7,11,27,.96);
+  }
+  #sidebar.open{box-shadow:30px 0 90px rgba(0,0,0,.62)}
+}
+@media (max-width:640px){
+  #hdr{height:62px;padding:0 12px}
+  #appContent{padding:18px 12px 46px}
+  .card{padding:17px;border-radius:16px}
+  .hero{padding:30px 14px}
+  .hero h1{font-size:clamp(31px,10vw,52px)}
+  .hP{display:none}
+  .hC button{width:35px;height:35px}
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+
+/* ===== BRANDING SIDEBAR + HEADER: 🌊 MISI GELOMBANG ===== */
+#sidebar{
+  width:126px;
+  padding:14px 8px 12px;
+}
+.sblo{
+  height:72px!important;
+  padding:5px 3px 12px!important;
+  margin-bottom:10px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:3px!important;
+  border-bottom:1px solid rgba(157,188,255,.13)!important;
+  overflow:visible!important;
+}
+.sbWave{
+  display:block;
+  font-size:25px;
+  line-height:24px;
+  filter:drop-shadow(0 0 9px rgba(72,245,208,.5));
+}
+.sbTitle{
+  display:block;
+  font-family:var(--fd);
+  font-size:8px;
+  line-height:1.05;
+  font-weight:700;
+  letter-spacing:1.15px;
+  text-align:center;
+  color:#dfeaff;
+}
+.nvi{
+  min-height:58px;
+  padding:8px 4px;
+  border-radius:14px;
+}
+.nvi .ic{font-size:20px!important;line-height:20px}
+.nvi .lb{
+  display:block!important;
+  font-size:8.5px!important;
+  line-height:1.15!important;
+  font-weight:600;
+  color:#91a1bf;
+  max-width:108px;
+}
+.nvi.active .lb{color:var(--teal)}
+.nvi.active::before{
+  left:-8px;
+}
+.hT{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  font-family:var(--fd);
+  font-weight:700;
+  font-size:14px!important;
+  letter-spacing:1.25px!important;
+  white-space:nowrap;
+}
+.hdrWave{
+  display:inline-flex;
+  width:20px;height:20px;
+  align-items:center;justify-content:center;
+  font-size:19px;
+  line-height:20px;
+  filter:drop-shadow(0 0 8px rgba(72,245,208,.48));
+}
+@media(max-width:1024px){
+  #sidebar{width:126px}
+}
+@media(max-width:640px){
+  #sidebar{width:118px}
+  .nvi .lb{font-size:8px!important}
+  .hT{font-size:12px!important;letter-spacing:.8px!important}
+}
+
+
+/* ===== STABILITY FIX: VISUALISASI 2D ===== */
+.v2w{position:relative!important;width:100%!important;height:320px!important;min-height:320px!important;overflow:hidden!important;border-radius:16px!important}
+.v2w .simcv{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:16px!important}
+.v2sel{position:absolute!important;inset:0!important;z-index:2!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center!important}
+.v2hostReady .v2sel{background:rgba(4,7,13,.82)}
+
+
+/* ===== ROBUST IMAGE FALLBACKS ===== */
+img{max-width:100%;}
+img[src="foto.jpg"],img[src="logo-1.jpg"],img[src="logo-2.jpg"],img[src="logo-3.jpg"],img[src="logo-4.jpg"],img[src="logo.png"]{background:linear-gradient(135deg,#0a1630,#07101f);}
+
+
+/* ===== FINAL FIX: PILIH ANIMASI DISAPPEARS AFTER SELECTION ===== */
+#v2Overlay.hidden{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+#v2Overlay:not(.hidden){visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+
 </style>
+
+<style id="footer-visibility-fix">
+html{scroll-padding-bottom:120px!important;}
+body{
+  min-height:100vh!important;
+  padding-bottom:0!important;
+}
+main,.main,.content,.app,.page,.page-content{
+  overflow:visible!important;
+}
+footer{
+  position:relative!important;
+  z-index:100!important;
+  isolation:isolate!important;
+  clear:both!important;
+  width:100%!important;
+  min-height:120px!important;
+  margin-top:48px!important;
+  padding:32px 24px!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+}
+footer *{
+  position:relative;
+  z-index:101!important;
+}
+footer canvas,
+footer .animation,
+footer .anim,
+footer .floating,
+footer [class*="anim"]{
+  z-index:0!important;
+}
+#app, #root, .app-shell, .layout, .main-layout{
+  min-height:100vh!important;
+}
+@media (max-width:768px){
+  footer{
+    min-height:140px!important;
+    margin-top:40px!important;
+    padding:28px 16px!important;
+  }
+}
+</style>
+
+
+<style id="developer-photo-fix">
+img[src$="foto-pengembang.jpg"]{
+  display:block!important;
+  width:110px!important;
+  height:110px!important;
+  max-width:110px!important;
+  max-height:110px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:50%!important;
+  border:3px solid rgba(57,198,232,.65)!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.20)!important;
+}
+</style>
+
+
+<style id="home-animation-blur-fix">
+/* =========================================================
+   HOME HERO ANIMATION
+   Animasi menjadi dekoratif: blur, opacity rendah,
+   tidak pernah menutupi teks/menu/interaksi.
+   ========================================================= */
+
+/* Lapisan animasi/background umum */
+.home-hero,
+.hero,
+.hero-section,
+.home,
+.home-page,
+.landing,
+.landing-page,
+.start-screen,
+.welcome-screen{
+  position:relative!important;
+  isolation:isolate!important;
+}
+
+/* Canvas animasi pada halaman utama dibuat sebagai background */
+.home-hero canvas,
+.hero canvas,
+.hero-section canvas,
+.home canvas,
+.home-page canvas,
+.landing canvas,
+.landing-page canvas,
+.start-screen canvas,
+.welcome-screen canvas{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  z-index:-2!important;
+  pointer-events:none!important;
+  filter:blur(5px)!important;
+  opacity:.22!important;
+  transform:scale(1.035)!important;
+}
+
+/* Elemen animasi dekoratif yang memakai class animation/particle */
+.home-hero .animation,
+.home-hero .anim,
+.home-hero .particles,
+.home-hero .particle,
+.home-hero .floating,
+.hero .animation,
+.hero .anim,
+.hero .particles,
+.hero .particle,
+.hero .floating,
+.home .animation,
+.home .anim,
+.home .particles,
+.home .particle,
+.home .floating{
+  pointer-events:none!important;
+  z-index:-1!important;
+  filter:blur(4px)!important;
+  opacity:.20!important;
+}
+
+/* Semua konten utama berada di atas animasi */
+.home-hero > :not(canvas),
+.hero > :not(canvas),
+.hero-section > :not(canvas),
+.home > :not(canvas),
+.home-page > :not(canvas),
+.landing > :not(canvas),
+.landing-page > :not(canvas),
+.start-screen > :not(canvas),
+.welcome-screen > :not(canvas){
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Teks hero harus selalu tajam */
+.home-hero h1,.home-hero h2,.home-hero h3,.home-hero p,
+.hero h1,.hero h2,.hero h3,.hero p,
+.hero-section h1,.hero-section h2,.hero-section h3,.hero-section p,
+.home h1,.home h2,.home h3,.home p,
+.home-page h1,.home-page h2,.home-page h3,.home-page p,
+.landing h1,.landing h2,.landing h3,.landing p,
+.start-screen h1,.start-screen h2,.start-screen h3,.start-screen p{
+  position:relative!important;
+  z-index:5!important;
+  filter:none!important;
+}
+
+/* Menu/header selalu paling atas */
+header,.topbar,.app-header,.site-header,
+nav,.navbar,.sidebar,.side-nav,.drawer{
+  position:relative!important;
+  z-index:1000!important;
+}
+
+/* Tombol dan menu tidak boleh terkena animasi */
+button,.btn,.nav-btn,.nav-item,[data-nav],
+.hamburger,.menu-toggle{
+  position:relative!important;
+  z-index:1001!important;
+  pointer-events:auto!important;
+}
+
+/* Jika ada overlay animasi full-screen, jadikan benar-benar non-interaktif */
+.home-animation,
+.hero-animation,
+.background-animation,
+.animation-bg,
+.bg-animation,
+.particle-bg,
+.wave-bg{
+  pointer-events:none!important;
+  z-index:-2!important;
+  filter:blur(5px)!important;
+  opacity:.18!important;
+}
+
+/* Mobile: sedikit lebih ringan agar teks makin jelas */
+@media(max-width:768px){
+  .home-hero canvas,
+  .hero canvas,
+  .hero-section canvas,
+  .home canvas,
+  .home-page canvas,
+  .landing canvas,
+  .landing-page canvas,
+  .start-screen canvas,
+  .welcome-screen canvas{
+    filter:blur(4px)!important;
+    opacity:.14!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -438,7 +1086,7 @@ body{overflow:visible;background:#fff}
 
 <div class="hidden" id="pg-app">
   <aside id="sidebar">
-    <div class="sblo" title="MISI GELOMBANG"><img src="Logo.jpg" alt="Logo Lab Maya"></div>
+    <div class="sblo" title="MISI GELOMBANG"><span class="sbWave">🌊</span><span class="sbTitle">MISI<br>GELOMBANG</span></div>
     <button class="nvi active" data-view="beranda" title="Beranda"><span class="ic">🏠</span><span class="lb">Beranda</span></button>
     <button class="nvi" data-view="petunjuk" title="Petunjuk Penggunaan"><span class="ic">📖</span><span class="lb">Petunjuk Penggunaan</span></button>
     <button class="nvi" data-view="tujuan" title="Tujuan Pembelajaran"><span class="ic">🎯</span><span class="lb">Tujuan Pembelajaran</span></button>
@@ -459,7 +1107,7 @@ body{overflow:visible;background:#fff}
   <div class="main">
     <header id="hdr">
       <button id="burger">☰</button>
-      <div class="hT"><img src="Logo.jpg" alt="Logo Lab Maya" class="hdrLogo"> <span>MISI GELOMBANG</span></div>
+      <div class="hT"><span class="hdrWave">🌊</span><span>MISI GELOMBANG</span></div>
       <div class="hU"><b id="hdrGreet">Halo!</b><span id="hdrInfo"></span></div>
       <div class="hP"><span class="plbl">PROGRES MISI</span><div class="pbar"><div id="hdrFill"></div></div><b id="hdrPct">0%</b></div>
       <div class="hC">
@@ -498,7 +1146,7 @@ body{overflow:visible;background:#fff}
                   stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .6s"/>
                 <text id="berRingTxt" x="60" y="67" text-anchor="middle" fill="#e8f4f6" font-size="21" font-family="Chakra Petch" font-weight="700">0%</text>
               </svg>
-              <div class="muted">Progres bertambah <b>hanya</b> saat sebuah tahap benar-benar diselesaikan. Menu terkunci tetap dapat diklik — akan muncul notifikasi syaratnya. Akhiri perjalananmu di menu <b>📚 Referensi</b>.</div>
+              <div class="muted">Progres bertambah <b>hanya</b> saat sebuah tahap benar-benar diselesaikan. Setiap tahap terbuka berurutan setelah tahap sebelumnya benar-benar selesai. Menu terkunci tetap dapat diklik untuk melihat syaratnya. Akhiri perjalananmu di menu <b>📚 Referensi</b>.</div>
             </div>
             <div style="margin-top:16px"><button class="btn pri" id="btnLanjut">🚀 LANJUTKAN MISI</button></div>
           </div>
@@ -1231,14 +1879,19 @@ buildTjAcc($('tjAcc'));
 /* ============ NAVIGASI + GERBANG ============ */
 const ORDER=['beranda','petunjuk','tujuan','materi','misi','lab','vis2d','lks','tantangan','evaluasi','hasil','pengembang','referensi'];
 const GATE={
-  lab:{c:()=>!!(S.lks.hip&&S.lks.hip.trim()),m:'Isi & simpan <b>hipotesis</b> di menu 🧭 Misi Laboratorium terlebih dahulu.'},
-  vis2d:{c:()=>!!S.f.banding,m:'Selesaikan <b>Eksperimen 01, Eksperimen 02, dan mode Bandingkan</b> di 🧪 Laboratorium terlebih dahulu.'},
-  lks:{c:()=>!!S.f.vis2d,m:'Jelajahi <b>🎞️ Visualisasi Animasi 2D</b> dan tekan “SELESAI” terlebih dahulu.'},
+  tujuan:{c:()=>!!S.f.registrasi,m:'Selesaikan <b>Registrasi Peneliti</b> terlebih dahulu.'},
+  materi:{c:()=>!!S.f.tujuan,m:'Selesaikan <b>Tujuan Pembelajaran</b> terlebih dahulu.'},
+  misi:{c:()=>!!S.f.materi,m:'Pelajari <b>Materi Gelombang</b> terlebih dahulu.'},
+  lab:{c:()=>!!(S.lks.hip&&S.lks.hip.trim()),m:'Tulis dan simpan <b>Hipotesis</b> di 🧭 Misi Laboratorium terlebih dahulu.'},
+  vis2d:{c:()=>!!(S.f.eksT&&S.f.eksL&&S.f.banding),m:'Selesaikan <b>Eksperimen 01, Eksperimen 02, dan mode Bandingkan</b> terlebih dahulu.'},
+  lks:{c:()=>!!S.f.vis2d,m:'Selesaikan <b>Visualisasi Animasi 2D</b> terlebih dahulu.'},
   tantangan:{c:()=>!!S.f.lks,m:'Isi dan <b>Simpan LKS Digital</b> terlebih dahulu.'},
-  evaluasi:{c:()=>!!S.f.tantangan,m:'Selesaikan <b>Tantangan</b> terlebih dahulu.'},
-  hasil:{c:()=>!!S.f.evaluasi,m:'Kerjakan <b>Evaluasi</b> terlebih dahulu.'}};
+  evaluasi:{c:()=>!!S.f.tantangan,m:'Selesaikan seluruh <b>Tantangan</b> terlebih dahulu.'},
+  hasil:{c:()=>!!S.f.evaluasi,m:'Kerjakan <b>Evaluasi</b> terlebih dahulu.'},
+  referensi:{c:()=>!!S.f.evaluasi,m:'Selesaikan <b>Evaluasi</b> terlebih dahulu sebelum membuka Referensi.'}
+};
 const done={};let curView='beranda';
-function enterApp(){$('pg-app').classList.remove('hidden');hdr();
+function enterApp(){$('pg-app').classList.remove('hidden');hdr();refreshLocks();
   if(!done.x){done.x=1;
     try{initLab();}catch(e){err(e);}
     try{initMateri();}catch(e){err(e);}
@@ -1266,7 +1919,7 @@ function go(v){try{
   if(v==='misi')refreshMisi();
   if(v==='lks')fillLKS();
   if(v==='hasil')renderHasil();
-  if(v==='vis2d'&&!S.f.vis2d)initVis2D();
+  if(v==='vis2d')initVis2D();
   if(v==='tantangan')initCh();
   if(v==='evaluasi'&&!EV.done)drawEval();
   if(v==='petunjuk'&&!$('stepGrid').innerHTML)renderSteps($('stepGrid'));
@@ -1377,9 +2030,16 @@ function renderBeranda(){const u=S.u;
     '<div class="mrow2"><span class="num">'+(i+1)+'</span><span>'+it[0]+'</span><span class="st '+(it[1]?'done':'')+'">'+(it[1]?'✓ +'+it[2]+'%':'BELUM (+'+it[2]+'%)')+'</span></div>').join('');
   const p=prog();$('berRing').style.strokeDashoffset=314-314*p/100;$('berRingTxt').textContent=p+'%';}
  $('btnLanjut').onclick=()=>{
-  const o=[['tujuan','tujuan'],['materi','materi'],['misi','misi'],['eksT','lab'],['eksL','lab'],['banding','lab'],['vis2d','vis2d'],['lks','lks'],['tantangan','tantangan'],['evaluasi','evaluasi']];
+  const o=[
+    ['tujuan','tujuan'],['materi','materi'],['misi','misi'],
+    ['eksT','lab'],['eksL','lab'],['banding','lab'],
+    ['vis2d','vis2d'],['lks','lks'],['tantangan','tantangan'],
+    ['evaluasi','evaluasi']
+  ];
   const nx=o.find(x=>!S.f[x[0]]);
-  if(nx)go(nx[1]);else{go('hasil');toast('🎉 Semua misi selesai — lihat Hasil Belajarmu!');}};
+  if(nx)go(nx[1]);
+  else if(S.f.evaluasi)go('hasil');
+};
 
 /* ============ MISI ============ */
 function refreshMisi(){
@@ -1391,7 +2051,7 @@ function refreshMisi(){
     :'Simpan hipotesismu terlebih dahulu untuk membuka pintu laboratorium.';}
  $('btnHipSave').onclick=()=>{const v=$('misHip').value.trim();
   if(!v){toast('⚠️ Tulis hipotesismu terlebih dahulu.','warn');AU.sfx('no');return;}
-  S.lks.hip=v;save();AU.sfx('win');refreshMisi();hdr();
+  S.lks.hip=v;save();refreshMisi();refreshLocks();hdr();
   toast('💾 Hipotesis tersimpan & otomatis terekam di LKS Digital.');};
  $('btnGoLab').onclick=()=>go('lab');
 
@@ -1399,9 +2059,9 @@ function refreshMisi(){
 function initMateri(){
   new Wave($('matCvT'),{type:'T',viewM:3,A:.3,lam:1.1,f:.6,rambat:1,env:1}).go=1;
   new Wave($('matCvL'),{type:'L',viewM:3,A:.09,lam:1.1,f:.6,rambat:1,dens:1}).go=1;}
- $('btnMatDone').onclick=()=>{const f=!S.f.materi;setFlag('materi');AU.sfx('win');
+ $('btnMatDone').onclick=()=>{const f=!S.f.materi;setFlag('materi');refreshLocks();AU.sfx('win');
   toast('🎉 Materi dipelajari'+(f?' — progres diperbarui!':'')+'. Lanjut ke Misi Laboratorium!');go('misi');};
- $('btnTjDone').onclick=()=>{setFlag('tujuan');AU.sfx('win');
+ $('btnTjDone').onclick=()=>{setFlag('tujuan');refreshLocks();AU.sfx('win');
   toast('🎯 Tujuan pembelajaran dipahami — progres diperbarui!');};
 
 /* ============ LAB ============ */
@@ -1625,7 +2285,7 @@ function finishExp(k){const{sim,c,sw}=LAB[k],p=c.pfx;
   const f=(sw.used&&t>.3&&n>0)?n/t:sim.o.f;
   const d={A:+sim.o.A.toFixed(3),f:+f.toFixed(2),lam:+lam.toFixed(2),v:+(lam*f).toFixed(2),t:+t.toFixed(1)};
   recordData(k);
-  setFlag(c.flag);setMission(c.mis,'done');
+  setFlag(c.flag);setMission(c.mis,'done');refreshLocks();
   awardXP(c.flag,10);
   AU.sfx('win');
   toast('🎉 Data eksperimen '+c.type+' <b>terekam otomatis ke LKS</b>!<br><small>A='+fmt(d.A)+' m · f='+fmt(d.f)+' Hz · λ='+fmt(d.lam)+' m · v='+fmt(d.v)+' m/s</small><br><small>Ubah parameter, amati & ukur ulang, lalu tekan tombol ini lagi untuk percobaan berikutnya.</small>',0,5000);
@@ -1657,7 +2317,7 @@ function fillLKS(){const u=S.u;
              L1:$('lkL1').value,L2:$('lkL2').value,L3:$('lkL3').value,L4:$('lkL4').value,L5:$('lkL5').value};
   S.lks.ans=[1,2,3,4,5,6].map(i=>$('an'+i).value);
   S.lks.kes=$('lksKes').value;
-  const f=!S.f.lks;setFlag('lks');setMission('m4','done');save();
+  const f=!S.f.lks;setFlag('lks');setMission('m4','done');refreshLocks();save();
   if(f)awardXP('lks',15);
   AU.sfx('win');toast('💾 LKS tersimpan di perangkatmu.'+(f?' +15 XP':''));};
  $('btnLksPrint').onclick=()=>{lksPrint();AU.sfx('click');};
@@ -1699,81 +2359,142 @@ function lksPrint(){
 
 /* ============ VISUALISASI ANIMASI 2D ============ */
 const V2D=[
- {nm:'Tali Transversal',    o:{type:'T',viewM:3.4,A:.35,lam:1.3,f:.6,env:1,obs:0,trail:0,dens:0,marks:0}},
- {nm:'Pegas Longitudinal',  o:{type:'L',viewM:3.4,A:.09,lam:1.3,f:.6,dens:1,env:0,obs:0,trail:0,marks:0}},
+ {nm:'Tali Transversal',o:{type:'T',viewM:3.4,A:.35,lam:1.3,f:.6,env:1,obs:0,trail:0,dens:0,marks:0}},
+ {nm:'Pegas Longitudinal',o:{type:'L',viewM:3.4,A:.09,lam:1.3,f:.6,dens:1,env:0,obs:0,trail:0,marks:0}},
  {nm:'Gerak Partikel & Jejak',o:{type:'T',viewM:1.6,A:.4,lam:1.2,f:.6,trail:1,obs:1,env:1,dens:0,marks:0}},
- {nm:'Model Transversal',   o:{type:'T',viewM:3,A:.3,lam:1.2,f:.6,marks:1,obs:1,env:1,dens:0,trail:0}},
- {nm:'Model Longitudinal',  o:{type:'L',viewM:3,A:.1,lam:1.2,f:.6,marks:1,obs:1,dens:1,env:0,trail:0}}];
+ {nm:'Model Transversal',o:{type:'T',viewM:3,A:.3,lam:1.2,f:.6,marks:1,obs:1,env:1,dens:0,trail:0}},
+ {nm:'Model Longitudinal',o:{type:'L',viewM:3,A:.1,lam:1.2,f:.6,marks:1,obs:1,dens:1,env:0,trail:0}}
+];
 let v2W=null,v2Seen=new Set();
 function initVis2D(){
+  const host=$('v2host');
+  const overlay=$('v2Overlay');
+  if(!host)return;
+
+  // First opening: show ONLY the instruction panel.
+  if(!v2W){
+    if(overlay)overlay.classList.remove('hidden');
+  }else{
+    // After a selection has been made: never show the instruction again.
+    if(overlay)overlay.classList.add('hidden');
+    v2W.go=1;
+  }
+
   $$('.v2chip').forEach(b=>{
     b.onclick=()=>{
-      AU.sfx('click');
-      if(!v2W){
-        const cv=document.createElement('canvas');cv.className='simcv';
-        $('v2host').appendChild(cv);
-        v2W=new Wave(cv,JSON.parse(JSON.stringify(V2D[0].o)));
-        v2W.go=1;}
-      const i=+b.dataset.v2-1,d=V2D[i];
-      Object.assign(v2W.o,d.o);
-      v2W.o.rul={xA:1.5,xB:2.7,used:0};v2W.o.ukur=0;
-      v2W.reset();v2W.go=1;
-      $$('.v2chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-      $('v2Overlay').classList.add('hidden');
-      v2Seen.add(i);
-      const btn=$('btnV2Done');
-      if(!S.f.vis2d)btn.disabled=v2Seen.size<V2D.length;
-      toast('🎞️ Animasi: <b>'+d.nm+'</b> — amati gerakannya!'+(v2Seen.size<V2D.length?'<br><small>Lihat semua '+V2D.length+' animasi berbeda ('+v2Seen.size+'/'+V2D.length+')</small>':''));};
+      try{
+        AU.sfx('click');
+        const i=+b.dataset.v2-1;
+        const d=V2D[i];
+        if(!d)return;
+
+        // Create the animation canvas only after a user chooses one.
+        if(!v2W){
+          const cv=document.createElement('canvas');
+          cv.className='simcv';
+          cv.id='v2Canvas';
+          host.insertBefore(cv,host.firstChild);
+          v2W=new Wave(cv,JSON.parse(JSON.stringify(d.o)));
+        }else{
+          Object.assign(v2W.o,d.o);
+        }
+
+        v2W.o.rul={xA:1.5,xB:2.7,used:0};
+        v2W.o.ukur=0;
+        v2W.reset();
+        v2W.go=1;
+        host.classList.add('v2hostReady');
+
+        // Critical fix: after selecting an animation, remove the
+        // "PILIH ANIMASI" instruction panel immediately.
+        if(overlay)overlay.classList.add('hidden');
+
+        $$('.v2chip').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        v2Seen.add(i);
+
+        const btn=$('btnV2Done');
+        if(btn)btn.disabled=!S.f.vis2d && v2Seen.size<V2D.length;
+
+        toast('🎞️ Animasi: <b>'+d.nm+'</b> — langsung bergerak.'+
+          (v2Seen.size<V2D.length
+            ?'<br><small>Jelajahi semua '+V2D.length+' animasi ('+v2Seen.size+'/'+V2D.length+')</small>'
+            :'<br><small>Semua animasi sudah dijelajahi.</small>'));
+      }catch(e){err(e);}
+    };
   });
-  $('btnV2Done').onclick=()=>{
-    setFlag('vis2d');AU.sfx('win');
-    toast('🎉 Visualisasi Animasi 2D selesai dijelajahi! Progres diperbarui.');
-    $('btnV2Done').textContent='✓ VISUALISASI ANIMASI 2D SELESAI';
-    $('btnV2Done').disabled=true;};}
+
+  const done=$('btnV2Done');
+  if(done){
+    done.onclick=()=>{
+      if(!S.f.vis2d && v2Seen.size<V2D.length){
+        toast('⏳ Jelajahi semua '+V2D.length+' animasi terlebih dahulu.','warn',3200);
+        return;
+      }
+      setFlag('vis2d');
+      refreshLocks();
+      AU.sfx('win');
+      toast('🎉 Visualisasi Animasi 2D selesai dijelajahi! Progres diperbarui.');
+      done.textContent='✓ VISUALISASI ANIMASI 2D SELESAI';
+      done.disabled=true;
+    };
+  }
+}
 
 /* ============ TANTANGAN ============ */
-let chS=null,chi=0,chA=0;
-function initCh(){
-  if(!chS){
-    chS=new Wave($('chCv'),{type:'T',viewM:3.2,A:.35,lam:1.2,f:.6,rambat:1,grid:0,label:0});
+let chS=null,chi=0,chA=0,chQ=[];
+function shuffleQuestions(){
+  chQ=CHD.map((_,i)=>i);
+  for(let i=chQ.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [chQ[i],chQ[j]]=[chQ[j],chQ[i]];
   }
-  chLoad(chi||0);}
+}
+function initCh(){
+  if(!chQ.length)shuffleQuestions();
+  if(!chS)chS=new Wave($('chCv'),{type:'T',viewM:3.2,A:.35,lam:1.2,f:.6,rambat:1,grid:0,label:0});
+  chLoad(0);
+}
 function dots(){
-  $('chDots').innerHTML=CHD.map((c,i)=>{const a=S.ch[i];
-    return '<span class="'+(a===undefined?(i==chi?'cur':''):(a?'ok':'bad'))+'">'+(i+1)+'</span>';}).join('');}
+  $('chDots').innerHTML=chQ.map((qi,i)=>{
+    const a=S.ch[qi];
+    return '<span class="'+(a===undefined?(i==chi?'cur':''):(a?'ok':'bad'))+'">'+(i+1)+'</span>';
+  }).join('');
+}
 function chLoad(i){
-  chi=i;chA=0;const d=CHD[i],o=chS.o;
+  if(!chQ.length)shuffleQuestions();
+  chi=i; chA=0;
+  const qi=chQ[i],d=CHD[qi],o=chS.o;
   o.type=d.t;o.A=d.A;o.lam=d.l;o.f=d.f;o.dir=d.d;o.dens=(d.t=='L')?1:0;
   chS.reset();chS.go=1;
-  $('chTitle').textContent='TANTANGAN '+(i+1)+'/'+CHD.length+' — “Gelombang apakah ini?”';
+  $('chTitle').textContent='TANTANGAN '+(i+1)+'/'+chQ.length+' — “Gelombang apakah ini?”';
   $('chFb').textContent='';$('chFb').className='chfb';
   $('btnChT').disabled=false;$('btnChL').disabled=false;
-  $('btnChNext').classList.add('hidden');dots();}
+  $('btnChNext').classList.add('hidden');dots();
+}
 function chAns(a){
-  if(!chS){initCh();}
-  if(chA)return;
+  if(!chS)initCh(); if(chA)return;
   chA=1;
-  const ok=(a==CHD[chi].t);
-  S.ch[chi]=ok;save();
+  const qi=chQ[chi],ok=(a==CHD[qi].t);
+  S.ch[qi]=ok;save();
   $('chFb').innerHTML=ok?'✓ Tepat! Kamu berhasil menemukan cirinya.':'Belum tepat. Amati kembali arah gerak partikelnya.';
   $('chFb').className='chfb '+(ok?'ok':'bad');
   AU.sfx(ok?'ok':'no');
   $('btnChT').disabled=true;$('btnChL').disabled=true;
-  $('btnChNext').classList.remove('hidden');dots();}
+  $('btnChNext').classList.remove('hidden');dots();
+}
 function chNextGo(){
-  if(!chS){initCh();}
+  if(!chS)initCh();
   if(!chA){toast('⏳ Jawab dulu tantangan ini sebelum melanjutkan.','warn');return;}
-  if(chi<CHD.length-1){chLoad(chi+1);}
-  else{$('btnChNext').classList.add('hidden');chEnd();}}
+  if(chi<chQ.length-1)chLoad(chi+1);else{$('btnChNext').classList.add('hidden');chEnd();}
+}
 function chEnd(){
   const n=Object.keys(S.ch).length,benar=Object.values(S.ch).filter(Boolean).length;
-  if(n>=CHD.length){
-    setFlag('tantangan');setMission('m5','done');
-    awardXP('tantangan',Math.round(20*benar/CHD.length));
-    AU.sfx('win');}
+  if(n>=CHD.length){setFlag('tantangan');setMission('m5','done');refreshLocks();awardXP('tantangan',Math.round(20*benar/CHD.length));AU.sfx('win');}
   $('chSummary').classList.remove('hidden');
   $('chSummary').innerHTML='<h3>🏁 HASIL TANTANGAN</h3><p class="muted" style="font-size:14.5px">Benar: <b class="hl">'
-    +benar+' / '+CHD.length+'</b>'+(n>=CHD.length?' — Misi Detektif Gelombang tuntas!':' — masih ada tantangan yang belum dijawab.')+'</p>';}
+    +benar+' / '+CHD.length+'</b>'+(n>=CHD.length?' — Misi Detektif Gelombang tuntas!':' — masih ada tantangan yang belum dijawab.')+'</p>';
+}
 
 /* ============ EVALUASI ============ */
 let EV={cur:0,ans:{},done:false};
@@ -1843,7 +2564,7 @@ function submitEval(){
     else ok=Array.isArray(a)&&q.it.every((it,j)=>a[j]===it.k);
     if(ok)benar++;});
   const skor=Math.round(benar/EVAL.length*100),best=Math.max(skor,S.ev?S.ev.best:0);
-  S.ev={benar,skor,best};setFlag('evaluasi');save();
+  S.ev={benar,skor,best};setFlag('evaluasi');refreshLocks();save();
   awardXP('evaluasi',Math.round(20*benar/EVAL.length));
   AU.sfx(skor>=70?'win':'no');
   EV.done=true;
