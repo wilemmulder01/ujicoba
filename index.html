@@ -1248,7 +1248,7 @@ function go(v){try{
   $$('.nvi[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view==v));
   closeSb();$('appContent').scrollTop=0;AU.sfx('click');
   curView=v;
-  if(!$('stepGrid').innerHTML))renderSteps($('stepGrid'));
+  if(!$('stepGrid').innerHTML)renderSteps($('stepGrid'));
 }catch(e){err(e);}}
  $$('.nvi[data-view]').forEach(b=>b.onclick=()=>go(b.dataset.view));
 function closeSb(){$('sidebar').classList.remove('open');$('scrim').classList.add('hidden');}
