@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>LAB MAYA — KELANA GELOMBANG | Lab Maya IPA SMP Kelas VIII</title>
+<title>LAB MAYA — MISI GELOMBANG | Lab Maya IPA SMP Kelas VIII</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -21,6 +21,31 @@ input,select,textarea{font-family:inherit}
 .page{position:fixed;inset:0;overflow:auto}
 .simcv{width:100%;height:320px;display:block;border-radius:14px;border:1px solid var(--line);background:#04070d;touch-action:none}
 .h190{height:190px}.h210{height:210px}.h240{height:240px}
+/* HEADER 4 LOGO DI HALAMAN UTAMA — ukuran menyesuaikan ikon lab maya */
+.logoRow{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:0 auto 18px}
+.logoRow .lg{background:rgba(255,255,255,.07);border:1px solid var(--line2);border-radius:14px;
+padding:7px 10px;display:flex;align-items:center;justify-content:center;
+box-shadow:0 6px 16px rgba(0,0,0,.45)}
+.logoRow .lg img{height:clamp(30px,5vw,44px);width:auto;object-fit:contain;display:block;
+filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.regLogo{display:block;width:min(60vw,230px);height:auto;margin:0 auto 12px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5))}
+.ava{position:relative}
+.ava img.dp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#quoteWrap{position:fixed;inset:0;z-index:500;background:rgba(2,6,14,.93);backdrop-filter:blur(6px);
+display:flex;align-items:center;justify-content:center;padding:20px}
+.quoteCard{position:relative;max-width:640px;width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:22px;
+padding:44px 34px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:qin .5s ease}
+@keyframes qin{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.quoteCard .qClose{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:10px;
+border:1px solid var(--line2);background:rgba(148,200,255,.06);color:var(--tx2);font-size:15px}
+.quoteCard .qClose:hover{color:var(--tx);border-color:var(--teal)}
+.quoteCard .qT{font-family:var(--fd);letter-spacing:5px;font-size:12px;color:var(--teal)}
+.quoteCard h2{font-family:var(--fd);font-size:clamp(21px,3.5vw,28px);margin:12px 0 4px;color:#ffd54a}
+.quoteCard .qWave{font-size:34px;margin:6px 0 14px}
+.quoteCard blockquote{font-size:15.5px;line-height:1.9;color:var(--tx);font-style:italic;margin:0 auto;max-width:520px}
+.quoteCard blockquote b{color:var(--teal);font-style:normal}
+.quoteCard .qSign{margin-top:18px;font-size:12px;color:var(--tx3);letter-spacing:1px;line-height:1.7}
+.quoteCard .qBtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 #pg-load{background:#02060e;overflow:hidden;z-index:90}
 #loadImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .ld-shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 55% at 50% 108%,rgba(2,8,22,.62),transparent 60%)}
@@ -272,21 +297,26 @@ border-bottom:2px solid var(--line2);display:inline-block;padding:0 18px 6px}
 .cert .cTtd{margin-top:22px;font-size:12.5px;color:var(--tx2);line-height:1.7}
 .cert .cTtd b{color:var(--tx)}
 .dev{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 18px}
-.ava{width:140px;height:140px;border-radius:50%;border:3px solid var(--teal);box-shadow:0 0 0 7px rgba(47,230,200,.1);overflow:hidden;background:#0e3d36;display:flex;align-items:center;justify-content:center}
+.ava{width:150px;height:150px;border-radius:50%;border:3px solid var(--teal);box-shadow:0 0 0 7px rgba(47,230,200,.1);overflow:hidden;background:#0e3d36;display:flex;align-items:center;justify-content:center}
 .dev h2{font-family:var(--fd);margin-top:20px;font-size:clamp(16px,2.4vw,21px)}
 .dev .role{color:var(--teal);font-family:var(--fd);letter-spacing:3px;font-size:11.5px;margin-top:7px}
 .dev .ai{margin-top:18px;font-size:13px;color:var(--tx2);border:1px dashed var(--line2);padding:11px 18px;border-radius:12px;font-style:italic}
 .refg li{font-size:13px;color:var(--tx2);line-height:1.75;margin:6px 0 6px 18px}
 .refg h4{font-family:var(--fd);color:var(--teal);letter-spacing:2px;font-size:12.5px;margin:18px 0 8px}
-#toasts{position:fixed;top:76px;right:16px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:min(350px,86vw);pointer-events:none}
+.endwrap{margin-top:22px;border:1px dashed var(--line2);border-radius:15px;padding:22px;text-align:center;
+background:radial-gradient(500px 220px at 50% 0%,rgba(47,230,200,.07),transparent),rgba(4,10,18,.4)}
+.endwrap h3{font-family:var(--fd);letter-spacing:2px;font-size:14px;color:var(--amber);margin-bottom:8px}
+.endwrap p{font-size:13px;color:var(--tx2);line-height:1.7;max-width:520px;margin:0 auto}
+#toasts{position:fixed;top:76px;right:16px;z-index:600;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:min(350px,86vw);pointer-events:none}
 .toast{background:rgba(10,20,32,.96);border:1px solid var(--line2);border-left:3px solid var(--teal);border-radius:11px;padding:12px 15px;font-size:13px;line-height:1.5;animation:tin .3s;pointer-events:auto;max-width:100%}
 .toast.warn{border-left-color:var(--amber)}
 @keyframes tin{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
-#modalWrap{position:fixed;inset:0;z-index:210;background:rgba(3,6,11,.8);display:flex;align-items:center;justify-content:center;padding:18px}
+#modalWrap{position:fixed;inset:0;z-index:400;background:rgba(3,6,11,.8);display:flex;align-items:center;justify-content:center;padding:18px}
 .modal{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:26px;max-width:400px;width:100%}
 .modal h3{font-family:var(--fd);margin-bottom:9px}
-.modal p{color:var(--tx2);font-size:14px;line-height:1.6}
+.modal p{color:var(--tx2);font-size:14px;line-height:1.6;white-space:pre-line}
 .mbtns{display:flex;gap:9px;justify-content:flex-end;margin-top:20px}
+#outModal{position:fixed;inset:0;z-index:450;background:rgba(3,6,11,.82);display:flex;align-items:center;justify-content:center;padding:18px}
 #printArea{display:none}
 @page{size:A4 portrait;margin:15mm 14mm}
 @media print{
@@ -320,16 +350,17 @@ body{overflow:visible;background:#fff}
 .v2w{height:300px}
 .mrow{grid-template-columns:1fr}
 #toasts{right:10px;top:72px}
+.quoteCard{padding:32px 20px}
 }
 </style>
 </head>
 <body>
 
 <div class="page" id="pg-load">
-  <img id="loadImg" src="loading.jpg" alt="LAB MAYA KELANA GELOMBANG">
+  <img id="loadImg" src="loading.jpg" alt="LAB MAYA MISI GELOMBANG">
   <div class="ld-fb">
     <div class="k">LAB MAYA</div>
-    <h1>🌊 KELANA <span>GELOMBANG</span></h1>
+    <h1>🌊 MISI <span>GELOMBANG</span></h1>
     <div class="t">Eksplorasi • Pahami • Temukan</div>
   </div>
   <div class="ld-shade"></div>
@@ -341,19 +372,40 @@ body{overflow:visible;background:#fff}
   <div id="ldSweep"></div>
 </div>
 
+<div class="quoteWrap hidden" id="quoteWrap">
+  <div class="quoteCard">
+    <button class="qClose" id="quoteClose" title="Tutup">✕</button>
+    <div class="qT">PENUTUP · LAB MAYA IPA</div>
+    <h2>🌊 Misi Gelombang berhasil diselesaikan!</h2>
+    <div class="qWave">🌊 ✨ 🌊</div>
+    <blockquote>“Ingat, seperti <b>gelombang</b> yang terus bergerak, <b>rasa ingin tahu</b> juga harus terus mengantarkanmu menuju <b>penemuan baru</b>.”</blockquote>
+    <div id="quoteExtra"></div>
+    <div class="qSign">Laboratorium Maya IPA — “Misi Gelombang”<br>Wilem Rilexen S P Mulder, S.Pd., M.Pd., Gr · SMP Negeri 65 Maluku Tengah</div>
+    <div class="qBtns">
+      <button class="btn danger" id="quoteLogout">🚪 LOGOUT</button>
+    </div>
+  </div>
+</div>
+
 <div class="page hidden" id="pg-home">
   <canvas id="heroS"></canvas><canvas id="heroT"></canvas><canvas id="heroL"></canvas>
   <div class="hero">
     <div class="kick">LAB MAYA IPA · SMP KELAS VIII · FASE D</div>
-    <h1>🌊 KELANA <em>GELOMBANG</em></h1>
+    <h1 id="homeH1">🌊 MISI <em>GELOMBANG</em></h1>
     <h2>Mengungkap Rahasia Gelombang Transversal dan Longitudinal</h2>
     <div class="tag">“Amati. Eksperimenkan. Bandingkan. Temukan!”</div>
+    <div class="logoRow" id="logoRow">
+      <span class="lg"><img src="logo-1.jpg" alt="Logo 1" onerror="this.parentElement.style.display='none'"></span>
+      <span class="lg"><img src="logo-2.jpg" alt="Logo 2" onerror="this.parentElement.style.display='none'"></span>
+      <span class="lg"><img src="logo-3.jpg" alt="Logo 3" onerror="this.parentElement.style.display='none'"></span>
+      <span class="lg"><img src="logo-4.jpg" alt="Logo 4" onerror="this.parentElement.style.display='none'"></span>
+    </div>
     <div class="hbtns">
       <button class="btn" id="homeTj">🎯 TUJUAN PEMBELAJARAN</button>
       <button class="btn" id="homePnd">📖 PANDUAN PENGGUNAAN</button>
       <button class="btn pri" id="homeGo">🚀 MASUK KE LABORATORIUM</button>
     </div>
-    <div class="hmeta">Dikembangkan oleh Wilem Rilexen S P Mulder</div>
+    <div class="hmeta">Dikembangkan oleh Wilem Rilexen S P Mulder, S.Pd., M.Pd., Gr — SMP Negeri 65 Maluku Tengah</div>
   </div>
   <div class="ovl hidden" id="ovTj"><div class="ovlc">
     <div class="vT" style="font-size:21px">🎯 Tujuan Pembelajaran</div>
@@ -370,8 +422,9 @@ body{overflow:visible;background:#fff}
 
 <div class="page hidden" id="pg-reg">
   <form class="regc" id="regForm" novalidate>
+    <img class="regLogo" src="logo.png" alt="" onerror="this.style.display='none'">
     <h1>🧑‍🔬 REGISTRASI PENELITI</h1>
-    <p class="welc">Selamat datang, Peneliti!<br>Lengkapi identitas sebelum memulai KELANA.</p>
+    <p class="welc">Selamat datang, Peneliti!<br>Lengkapi identitas sebelum memulai misi.</p>
     <div class="fr"><label>Nama Lengkap</label><input id="regNama" placeholder="Masukkan nama lengkap" autocomplete="off"></div>
     <div class="fr"><label>Kelas</label>
       <input id="regKelas" placeholder="Tulis kelasmu, contoh: VIII A" list="dlKelas" autocomplete="off">
@@ -379,18 +432,18 @@ body{overflow:visible;background:#fff}
     <div class="fr"><label>Kelompok</label><input id="regKel" placeholder="Masukkan kelompok (mis. Kelompok 3)" autocomplete="off"></div>
     <div class="fr"><label>Nama Pengajar / Guru</label><input id="regGuru" placeholder="Masukkan nama pengajar/guru" autocomplete="off"></div>
     <div class="regmsg" id="regMsg"></div>
-    <button type="submit" class="btn pri" style="width:100%;justify-content:center">🚀 MULAI KELANA</button>
+    <button type="submit" class="btn pri" style="width:100%;justify-content:center">🚀 MULAI MISI</button>
   </form>
 </div>
 
 <div class="hidden" id="pg-app">
   <aside id="sidebar">
-    <div class="sblo" title="KELANA GELOMBANG">🌊</div>
+    <div class="sblo" title="MISI GELOMBANG">🌊</div>
     <button class="nvi active" data-view="beranda" title="Beranda"><span class="ic">🏠</span><span class="lb">Beranda</span></button>
     <button class="nvi" data-view="petunjuk" title="Petunjuk Penggunaan"><span class="ic">📖</span><span class="lb">Petunjuk Penggunaan</span></button>
     <button class="nvi" data-view="tujuan" title="Tujuan Pembelajaran"><span class="ic">🎯</span><span class="lb">Tujuan Pembelajaran</span></button>
     <button class="nvi" data-view="materi" title="Materi / Teori"><span class="ic">📚</span><span class="lb">Materi / Teori</span></button>
-    <button class="nvi" data-view="KELANA" title="KELANA Laboratorium"><span class="ic">🧭</span><span class="lb">KELANA Laboratorium</span></button>
+    <button class="nvi" data-view="misi" title="Misi Laboratorium"><span class="ic">🧭</span><span class="lb">Misi Laboratorium</span></button>
     <button class="nvi" data-view="lab" title="Laboratorium"><span class="ic">🧪</span><span class="lb">Laboratorium</span></button>
     <button class="nvi" data-view="vis2d" title="Visualisasi Animasi 2D"><span class="ic">🎞️</span><span class="lb">Visualisasi Animasi 2D</span></button>
     <button class="nvi" data-view="lks" title="LKS Digital"><span class="ic">📝</span><span class="lb">LKS Digital</span></button>
@@ -399,23 +452,22 @@ body{overflow:visible;background:#fff}
     <button class="nvi" data-view="hasil" title="Hasil Belajar"><span class="ic">🏆</span><span class="lb">Hasil Belajar</span></button>
     <button class="nvi" data-view="pengembang" title="Pengembang"><span class="ic">👤</span><span class="lb">Pengembang</span></button>
     <button class="nvi" data-view="referensi" title="Referensi"><span class="ic">📚</span><span class="lb">Referensi</span></button>
-    <button class="nvi out" id="btnLogout" title="Keluar"><span class="ic">⏻</span><span class="lb">Keluar</span></button>
+    <button class="nvi out" id="btnLogout" title="Keluar"><span class="ic">🚪</span><span class="lb">Keluar</span></button>
     <div class="sbft">LAB MAYA IPA<br>SMP VIII · FASE D</div>
   </aside>
   <div id="scrim" class="hidden"></div>
   <div class="main">
-  <header id="hdr">
+    <header id="hdr">
       <button id="burger">☰</button>
-      <div class="hT"><img src="logo.jpg" alt="Logo Kelana Gelombang" class="hdr-logo"> KELANA GELOMBANG</div>
+      <div class="hT">🌊 MISI GELOMBANG</div>
       <div class="hU"><b id="hdrGreet">Halo!</b><span id="hdrInfo"></span></div>
-      <div class="hP"><span class="plbl">PROGRES KELANA</span><div class="pbar"><div id="hdrFill"></div></div><b id="hdrPct">0%</b></div>
+      <div class="hP"><span class="plbl">PROGRES MISI</span><div class="pbar"><div id="hdrFill"></div></div><b id="hdrPct">0%</b></div>
       <div class="hC">
         <button id="btnMusic" title="Musik ON/OFF">🔊</button>
         <button id="btnSfx" title="Efek suara ON/OFF">🔔</button>
         <button id="btnVol" title="Volume">🎚️</button>
         <button id="btnFs" title="Layar penuh (F)"><span id="fsOn" class="hidden">⤡</span><span id="fsOff">⛶</span></button>
       </div>
-</header>
     </header>
     <div id="volPop" class="hidden">
       <label>🔈 VOLUME UTAMA</label>
@@ -437,7 +489,7 @@ body{overflow:visible;background:#fff}
           </div>
         </div>
         <div class="grid2" style="margin-top:16px">
-          <div class="card"><h3>🎯 KELANA ANDA</h3><div id="berKELANA"></div></div>
+          <div class="card"><h3>🎯 MISI ANDA</h3><div id="berMisi"></div></div>
           <div class="card"><h3>📊 PROGRES PEMBELAJARAN</h3>
             <div class="rw">
               <svg width="120" height="120" viewBox="0 0 120 120">
@@ -446,9 +498,9 @@ body{overflow:visible;background:#fff}
                   stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .6s"/>
                 <text id="berRingTxt" x="60" y="67" text-anchor="middle" fill="#e8f4f6" font-size="21" font-family="Chakra Petch" font-weight="700">0%</text>
               </svg>
-              <div class="muted">Progres bertambah <b>hanya</b> saat sebuah tahap benar-benar diselesaikan. Menu terkunci tetap dapat diklik — akan muncul notifikasi syaratnya. Gunakan <b>🚪 Keluar</b> di sidebar untuk kembali ke halaman utama.</div>
+              <div class="muted">Progres bertambah <b>hanya</b> saat sebuah tahap benar-benar diselesaikan. Menu terkunci tetap dapat diklik — akan muncul notifikasi syaratnya. Akhiri perjalananmu di menu <b>📚 Referensi</b>.</div>
             </div>
-            <div style="margin-top:16px"><button class="btn pri" id="btnLanjut">🚀 LANJUTKAN KELANA</button></div>
+            <div style="margin-top:16px"><button class="btn pri" id="btnLanjut">🚀 LANJUTKAN MISI</button></div>
           </div>
         </div>
         </div>
@@ -539,10 +591,10 @@ body{overflow:visible;background:#fff}
         </div>
       </section>
 
-      <section class="view hidden" id="view-KELANA">
-        <div class="locknote hidden" id="lock-KELANA"></div>
-        <div class="lockbody" id="body-KELANA">
-        <div class="vT">🧭 KELANA LABORATORIUM</div>
+      <section class="view hidden" id="view-misi">
+        <div class="locknote hidden" id="lock-misi"></div>
+        <div class="lockbody" id="body-misi">
+        <div class="vT">🧭 MISI LABORATORIUM</div>
         <p class="vS">Mulailah dengan menulis hipotesismu, simpan, lalu masuk ke laboratorium untuk membuktikannya.</p>
         <div class="card">
           <h3>💡 LANGKAH 1 · TULIS HIPOTESISMU</h3>
@@ -638,7 +690,7 @@ body{overflow:visible;background:#fff}
         <div class="card"><h3>❓ RUMUSAN MASALAH</h3>
           <p class="muted" style="font-size:14.5px"><i>“Bagaimana cara membedakan gelombang transversal dan longitudinal?”</i></p></div>
         <div class="card"><h3>💡 HIPOTESIS</h3>
-          <p class="muted" style="margin-bottom:9px">Hipotesismu dari menu KELANA Laboratorium otomatis muncul di sini — dan tetap dapat kamu ubah.</p>
+          <p class="muted" style="margin-bottom:9px">Hipotesismu dari menu Misi Laboratorium otomatis muncul di sini — dan tetap dapat kamu ubah.</p>
           <textarea class="lta" id="lksHip" placeholder="Tuliskan hipotesismu di sini…"></textarea></div>
         <div class="card"><h3>📊 DATA PERCOBAAN — TEREKAM OTOMATIS</h3>
           <p class="muted" style="margin-bottom:10px">Tabel ini terisi otomatis setiap kali kamu menekan <b class="hl">✓ REKAM DATA & SELESAIKAN</b> pada eksperimen di Laboratorium. Tidak ada batas percobaan — setiap penekanan tombol itu menambah satu baris data baru.</p>
@@ -709,7 +761,7 @@ body{overflow:visible;background:#fff}
         <div class="locknote hidden" id="lock-hasil"></div>
         <div class="lockbody" id="body-hasil">
         <div class="vT">🏆 HASIL BELAJAR</div>
-        <p class="vS">Rekap seluruh capaian KELANAmu di laboratorium maya.</p>
+        <p class="vS">Rekap seluruh capaian misimu di laboratorium maya.</p>
         <div id="hasilBody"></div>
         </div>
       </section>
@@ -719,8 +771,9 @@ body{overflow:visible;background:#fff}
         <div class="vT">👤 PENGEMBANG</div>
         <div class="card dev">
           <div class="ava">
-  <img src="foto-pengembang.jpg" alt="Foto Pengembang" width="136" height="136" style="border-radius: 50%; object-fit: cover;">
-</div>
+            <svg viewBox="0 0 100 100" width="146" height="146"><rect width="100" height="100" fill="#0e3d36"/><text x="50" y="63" text-anchor="middle" font-family="Chakra Petch" font-weight="700" font-size="36" fill="#2fe6c8">WR</text></svg>
+            <img class="dp" src="foto.jpg" alt="Foto Pengembang" onerror="this.remove()">
+          </div>
           <h2>WILEM RILEXEN S P MULDER, S.Pd., M.Pd., Gr</h2>
           <div class="role">GURU IPA</div>
           <p class="muted" style="margin-top:4px">SMP NEGERI 65 MALUKU TENGAH</p>
@@ -754,6 +807,14 @@ body{overflow:visible;background:#fff}
             <li><b>Chat GPT</b></li>
           </ol>
         </div>
+        <div class="endwrap">
+          <h3>🏁 AKHIRI PERJALANANMU</h3>
+          <p>Setelah seluruh misi selesai dan seluruh referensi kamu baca, akhiri lab maya ini lewat tombol di bawah — atau gunakan 🚪 Keluar di kapan saja melalui sidebar.</p>
+          <div class="btnrow" style="justify-content:center;margin-top:14px">
+            <button class="btn amb" id="btnEnd">🌊 AKHIRI MISI</button>
+            <button class="btn danger" id="btnRefLogout">🚪 LOGOUT</button>
+          </div>
+        </div>
         </div>
       </section>
 
@@ -766,10 +827,24 @@ body{overflow:visible;background:#fff}
   <h3 id="modalTitle">Konfirmasi</h3><p id="modalMsg"></p>
   <div class="mbtns"><button class="btn" id="modalCancel">BATAL</button><button class="btn danger" id="modalOk">HAPUS DATA</button></div>
 </div></div>
+<div id="outModal" class="hidden"><div class="modal">
+  <h3 id="outTitle">Keluar dari Lab Maya</h3><p id="outMsg"></p>
+  <div class="mbtns"><button class="btn" id="outCancel">BATAL</button><button class="btn danger" id="outOk">🚪 LOGOUT</button></div>
+</div></div>
 <div id="printArea"></div>
 
 <script>
 'use strict';
+/* ============ DIAGNOSTIK: error skrip selalu terlihat ============ */
+window.addEventListener('error',function(ev){
+  try{
+    var d=document.createElement('div');
+    d.style.cssText='position:fixed;left:12px;bottom:12px;z-index:9999;background:#3a0e14;color:#ffd9de;border:1px solid #ff6b7a;border-radius:10px;padding:10px 14px;font:12px Sora,sans-serif;max-width:70vw';
+    d.textContent='⚠️ Kesalahan skrip: '+(ev&&ev.message?ev.message:'tidak diketahui');
+    document.body.appendChild(d);
+  }catch(e){}
+});
+
 /* ============ HELPERS ============ */
 const TAU=Math.PI*2;
 const $=id=>document.getElementById(id);
@@ -785,10 +860,11 @@ function toast(msg,type,ms){try{
   setTimeout(()=>{d.style.opacity='0';d.style.transition='.4s';setTimeout(()=>d.remove(),400);},ms||3000);
 }catch(e){}}
 function askConfirm(t,m,okL){return new Promise(res=>{
-  $('modalTitle').textContent=t;$('modalMsg').textContent=m;$('modalOk').textContent=okL;
+  $('modalTitle').textContent=t;$('modalMsg').textContent=m;$('modalOk').textContent=okL||'OK';
   $('modalWrap').classList.remove('hidden');
-  const fin=v=>{$('modalWrap').classList.add('hidden');$('modalOk').onclick=$('modalCancel').onclick=null;res(v);};
-  $('modalOk').onclick=()=>fin(true);$('modalCancel').onclick=()=>fin(false);});}
+  const fin=v=>{$('modalWrap').classList.add('hidden');$('modalOk').onclick=null;$('modalCancel').onclick=null;res(v);};
+  $('modalOk').onclick=()=>fin(true);
+  $('modalCancel').onclick=()=>fin(false);});}
 function rrect(ctx,x,y,w,h,r){ctx.beginPath();
   ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
   ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
@@ -803,7 +879,7 @@ function arrow(ctx,x1,y1,x2,y2,col,w){
 function accTgl(h){h.parentElement.classList.toggle('open');AU.sfx('click');}
 
 /* ============ STATE ============ */
-const KEY='KELANAGelombang_v10';
+const KEY='misiGelombang_v10';
 function blank(){return{u:null,xp:0,xpk:{},f:{},m:{},lks:{hip:'',tab:{},ans:['','','','','',''],kes:''},
   auto:[],ch:{},ev:null,set:{music:1,sfx:1,vol:.5}};}
 let S=blank();
@@ -817,12 +893,15 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
 
 /* ============ AUDIO ============ */
 const AU={ctx:null,
-  init(){if(this.ctx)return;const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
+  init(){try{
+    if(this.ctx){if(this.ctx.state=='suspended')this.ctx.resume();return;}
+    const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
     this.ctx=new C();
     this.master=this.ctx.createGain();this.master.gain.value=S.set.vol;this.master.connect(this.ctx.destination);
     this.mus=this.ctx.createGain();this.mus.gain.value=S.set.music?.5:0;this.mus.connect(this.master);
     this.fx=this.ctx.createGain();this.fx.gain.value=S.set.sfx?1:0;this.fx.connect(this.master);
-    this.seq();},
+    this.seq();
+  }catch(e){}},
   t(f0,f1,d,type,vol,at,dest){if(!this.ctx)return;
     const t0=this.ctx.currentTime+(at||0),o=this.ctx.createOscillator(),g=this.ctx.createGain();
     o.type=type;o.frequency.setValueAtTime(f0,t0);
@@ -830,13 +909,18 @@ const AU={ctx:null,
     g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(vol,t0+.02);
     g.gain.exponentialRampToValueAtTime(.0001,t0+d);
     o.connect(g);g.connect(dest||this.fx);o.start(t0);o.stop(t0+d+.05);},
-  sfx(n){if(!S.set.sfx)return;try{this.init();if(!this.ctx)return;const F=(a,b,c,d,e,w)=>this.t(a,b,c,d,e,w,this.fx);
+  sfx(n){try{
+    this.init();
+    if(!S.set.sfx||!this.ctx)return;
+    const F=(a,b,c,d,e,w)=>this.t(a,b,c,d,e,w,this.fx);
     if(n=='click')F(700,520,.07,'sine',.3);
     else if(n=='start')F(440,880,.18,'triangle',.45);
     else if(n=='ok'){F(660,660,.1,'sine',.45);F(990,990,.16,'sine',.45,.1);}
     else if(n=='no')F(300,170,.28,'sawtooth',.25);
     else if(n=='win'){F(523,523,.1,'triangle',.45);F(659,659,.1,'triangle',.45,.11);F(784,784,.22,'triangle',.45,.22);}
     else if(n=='badge'){F(784,784,.08,'sine',.4);F(1046,1046,.08,'sine',.4,.09);F(1318,1318,.2,'sine',.4,.18);}
+    else if(n=='fin'){F(392,392,.14,'triangle',.42);F(494,494,.14,'triangle',.42,.15);
+      F(587,587,.16,'triangle',.42,.3);F(784,784,.4,'triangle',.45,.48);}
   }catch(e){}},
   seq(){if(this._sq||!this.ctx)return;
     const CH=[[262,330,392,523],[196,247,294,392],[220,262,330,440],[175,220,262,349]];
@@ -852,7 +936,7 @@ const AU={ctx:null,
   vol(v){S.set.vol=v;if(this.master)this.master.gain.value=v;save();},
   music(on){S.set.music=on;if(this.mus)this.mus.gain.value=on?.5:0;save();},
   sfxOn(on){S.set.sfx=on;if(this.fx)this.fx.gain.value=on?1:0;save();}};
-document.addEventListener('pointerdown',()=>{try{AU.init();if(AU.ctx&&AU.ctx.state=='suspended')AU.ctx.resume();}catch(e){}},{once:true});
+document.addEventListener('pointerdown',()=>{try{AU.init();}catch(e){}},{once:true});
 
 /* Suara getaran (demo intensitas bunyi) */
 const Tone={o:null,g:null,cur:null,
@@ -1017,7 +1101,7 @@ const ANAQ=[
 const STEPS=[['📝','Registrasi Peneliti','Isi nama, kelas, kelompok, dan guru pada halaman registrasi.'],
 ['🎯','Pelajari Tujuan','Klik Capaian, Tujuan, dan Indikator untuk membuka isinya.'],
 ['📚','Pelajari Materi','Klik setiap judul materi untuk membuka teori & animasinya.'],
-['🧭','Tulis Hipotesis','Di menu KELANA Laboratorium, tulis dugaan awalmu — otomatis terekam ke LKS.'],
+['🧭','Tulis Hipotesis','Di menu Misi Laboratorium, tulis dugaan awalmu — otomatis terekam ke LKS.'],
 ['🧪','Eksperimen 01 lalu 02','Selesaikan TRANSVERSAL dulu, baru LONGITUDINAL terbuka.'],
 ['📊','Rekam Data & Ulangi','Tekan ✓ REKAM DATA — hasil otomatis masuk LKS. Ulangi hingga maksimal!'],
 ['⚖️','Bandingkan & Partikel','Setelah kedua eksperimen selesai, buka mode Bandingkan lalu Lihat Partikel.'],
@@ -1025,7 +1109,7 @@ const STEPS=[['📝','Registrasi Peneliti','Isi nama, kelas, kelompok, dan guru 
 ['📝','LKS: Analisis & Kesimpulan','Jawab 6 pertanyaan analisis, tulis kesimpulan, lalu SIMPAN.'],
 ['🕵️','Selesaikan Tantangan','Deteksi jenis gelombang pada 8 tantangan animasi.'],
 ['🧠','Kerjakan Evaluasi','15 soal satu per satu — jawab dulu, baru lanjut.'],
-['🏆','Hasil & Keluar','Periksa skor, XP, badge, cetak LKS & sertifikat, lalu 🚪 Keluar.']];
+['🏁','Akhiri di Referensi','Lihat Hasil Belajar, baca Referensi, lalu tekan 🌊 AKHIRI MISI!']];
 const CHD=[{t:'T',A:.4,l:1.4,f:.5,d:1},{t:'L',A:.1,l:1.2,f:.7,d:1},{t:'T',A:.3,l:.8,f:1.1,d:1},{t:'L',A:.07,l:1.8,f:.4,d:1},
 {t:'T',A:.45,l:1.6,f:.6,d:-1},{t:'L',A:.12,l:1,f:.9,d:-1},{t:'T',A:.15,l:1,f:1.5,d:1},{t:'L',A:.14,l:1.5,f:.5,d:1}];
 const ETN={pg:'PILIHAN GANDA',bs:'BENAR / SALAH',match:'MENJODOHKAN',anim:'BERBASIS ANIMASI'};
@@ -1127,7 +1211,7 @@ buildTjAcc($('tjAcc'));
  $('ovPndC').onclick=()=>$('ovPnd').classList.add('hidden');
  $('homeGo').onclick=()=>{AU.sfx('start');
   if(S.u){$('regNama').value=S.u.nama;$('regKelas').value=S.u.kelas;$('regKel').value=S.u.kelompok;$('regGuru').value=S.u.guru;
-    $('regMsg').textContent='✓ Data ditemukan — tekan MULAI KELANA untuk melanjutkan.';$('regMsg').className='regmsg ok';}
+    $('regMsg').textContent='✓ Data ditemukan — tekan MULAI MISI untuk melanjutkan.';$('regMsg').className='regmsg ok';}
   $('pg-home').classList.add('hidden');$('pg-reg').classList.remove('hidden');};
  $('regForm').addEventListener('submit',e=>{e.preventDefault();
   const v=['regNama','regKelas','regKel','regGuru'].map(i=>$(i).value.trim());
@@ -1141,9 +1225,9 @@ buildTjAcc($('tjAcc'));
   setTimeout(()=>{$('pg-reg').classList.add('hidden');enterApp();},700);});
 
 /* ============ NAVIGASI + GERBANG ============ */
-const ORDER=['beranda','petunjuk','tujuan','materi','KELANA','lab','vis2d','lks','tantangan','evaluasi','hasil','pengembang','referensi'];
+const ORDER=['beranda','petunjuk','tujuan','materi','misi','lab','vis2d','lks','tantangan','evaluasi','hasil','pengembang','referensi'];
 const GATE={
-  lab:{c:()=>!!(S.lks.hip&&S.lks.hip.trim()),m:'Isi & simpan <b>hipotesis</b> di menu 🧭 KELANA Laboratorium terlebih dahulu.'},
+  lab:{c:()=>!!(S.lks.hip&&S.lks.hip.trim()),m:'Isi & simpan <b>hipotesis</b> di menu 🧭 Misi Laboratorium terlebih dahulu.'},
   vis2d:{c:()=>!!S.f.banding,m:'Selesaikan <b>Eksperimen 01, Eksperimen 02, dan mode Bandingkan</b> di 🧪 Laboratorium terlebih dahulu.'},
   lks:{c:()=>!!S.f.vis2d,m:'Jelajahi <b>🎞️ Visualisasi Animasi 2D</b> dan tekan “SELESAI” terlebih dahulu.'},
   tantangan:{c:()=>!!S.f.lks,m:'Isi dan <b>Simpan LKS Digital</b> terlebih dahulu.'},
@@ -1164,31 +1248,7 @@ function go(v){try{
   $$('.nvi[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view==v));
   closeSb();$('appContent').scrollTop=0;AU.sfx('click');
   curView=v;
-  if(!$('stepGrid').innerHTML)renderSteps($('stepGrid'));
-  const g=GATE[v];let locked=false;
-  $$('.locknote').forEach(x=>x.classList.add('hidden'));
-  $$('.lockbody').forEach(x=>x.classList.add('hidden'));
-  if(g){locked=!g.c();
-    const ln=$('lock-'+v);
-    if(ln){ln.innerHTML='🔒 <b>MENU INI BELUM DAPAT DIAKSES.</b><br>'+g.m
-      +'<div class="hint">Menu ini dapat diklik kapan saja — selesaikan syaratnya, lalu kembali ke sini.</div>';
-      ln.classList.toggle('hidden',!locked);}
-    const bd=$('body-'+v);
-    if(bd)bd.classList.toggle('hidden',locked);
-  }else{
-    const bd=$('body-'+v);if(bd)bd.classList.remove('hidden');
-  }
-  if(v=='beranda'&&!locked)renderBeranda();
-  if(v=='KELANA')refreshKELANA();
-  if(v=='lks')fillLKS();
-  if(v=='vis2d')initVis2D();
-  if(v=='tantangan')initCh();
-  if(v=='evaluasi'&&!locked&&!done.ev){done.ev=1;buildEval();}
-  if(v=='hasil'&&!locked)renderHasil();
-  if(v=='lab'&&!locked){if(S.m.m1!='done')setMission('m1','run');if(S.m.m2!='done')setMission('m2','run');}
-  if(v=='lks'&&!locked&&S.m.m4!='done')setMission('m4','run');
-  if(v=='tantangan'&&!locked&&S.m.m5!='done')setMission('m5','run');
-  if(locked)toast('🔒 Menu terbuka, tetapi kontennya terkunci — lihat notifikasi di atas.','warn',3200);
+  if(!$('stepGrid').innerHTML))renderSteps($('stepGrid'));
 }catch(e){err(e);}}
  $$('.nvi[data-view]').forEach(b=>b.onclick=()=>go(b.dataset.view));
 function closeSb(){$('sidebar').classList.remove('open');$('scrim').classList.add('hidden');}
@@ -1207,22 +1267,38 @@ function navFoot(){
 function labelOf(v){const b=document.querySelector('.nvi[data-view="'+v+'"] .lb');
   return b?(b.dataset.lbl||b.textContent).replace(' 🔒',''):v;}
 
-/* ============ LOGOUT ============ */
- $('btnLogout').onclick=async()=>{
+/* ============ LOGOUT & AKHIRI MISI ============ */
+function doLogout(){
+  try{Tone.stop();}catch(e){}
+  try{if(AU.mus&&AU.ctx)AU.mus.gain.setTargetAtTime(0,AU.ctx.currentTime,.3);}catch(e){}
+  closeSb();
+  $('quoteWrap').classList.add('hidden');
+  $('outModal').classList.add('hidden');
+  $('pg-app').classList.add('hidden');
+  $('pg-home').classList.remove('hidden');
+  try{window.scrollTo(0,0);}catch(e){}
+  curView='beranda';
+  if(S.set.music&&AU.mus&&AU.ctx)AU.mus.gain.setTargetAtTime(.5,AU.ctx.currentTime,.6);}
+function askLogout(){
   AU.sfx('click');
-  if(!S.u){$('pg-app').classList.add('hidden');$('pg-home').classList.remove('hidden');return;}
-  if(await askConfirm('Keluar dari Lab Maya',
-    'Apakah Anda yakin ingin keluar, '+S.u.nama+'?\nSeluruh data pembelajaranmu (identitas, progres, XP, LKS, dan sertifikat) tetap tersimpan dan dapat dilanjutkan kembali.',
-    'KELUAR')){
-    try{Tone.stop();}catch(e){}
-    closeSb();
-    $('pg-app').classList.add('hidden');
-    $('pg-home').classList.remove('hidden');
-    window.scrollTo(0,0);
-    curView='beranda';
-    AU.sfx('win');
-    toast('👋 Sampai jumpa, <b>'+esc(S.u.nama)+'</b>!<br><small>Datamu tetap tersimpan — tekan “🚀 MASUK KE LABORATORIUM” untuk melanjutkan.</small>',0,4500);
-  }};
+  if(!S.u){doLogout();return;}
+  $('outTitle').textContent='Keluar dari Lab Maya';
+  $('outMsg').textContent='Apakah Anda yakin ingin keluar, '+S.u.nama+'?\n\nSeluruh data pembelajaranmu (identitas, progres, XP, LKS, dan sertifikat) tetap tersimpan dan dapat dilanjutkan kembali.';
+  $('outOk').textContent='🚪 LOGOUT';
+  $('outModal').classList.remove('hidden');}
+function endMissionShow(){
+  AU.sfx('fin');
+  closeSb();
+  const p=prog();
+  $('quoteExtra').innerHTML=p>=100
+    ?'<div style="margin-top:14px"><span style="border:1px solid rgba(67,224,138,.5);color:var(--green);border-radius:99px;padding:6px 16px;font-size:12.5px;font-weight:700">✓ SELURUH MISI TUNTAS — PROGRES 100%</span></div>'
+    :'<div style="margin-top:14px;font-size:12px;color:var(--tx3)">Progresmu saat ini: <b style="color:var(--teal)">'+p+'%</b> — datamu tersimpan dan dapat kamu lanjutkan kembali kapan saja.</div>';
+  $('quoteWrap').classList.remove('hidden');
+  $('appContent').scrollTop=0;}
+function closeQuote(){
+  AU.sfx('click');
+  $('quoteWrap').classList.add('hidden');
+  try{if(AU.mus&&AU.ctx&&S.set.music)AU.mus.gain.setTargetAtTime(.5,AU.ctx.currentTime,.4);}catch(e){}}
 
 /* ============ HEADER CONTROLS ============ */
 function wireHeader(){
@@ -1266,16 +1342,16 @@ function renderBeranda(){const u=S.u;
     ['Menganalisis data (LKS Digital)',S.f.lks,15],
     ['Menyelesaikan tantangan',S.f.tantangan,15],
     ['Menyelesaikan evaluasi',S.f.evaluasi,20]];
-  $('berKELANA').innerHTML=items.map((it,i)=>
+  $('berMisi').innerHTML=items.map((it,i)=>
     '<div class="mrow2"><span class="num">'+(i+1)+'</span><span>'+it[0]+'</span><span class="st '+(it[1]?'done':'')+'">'+(it[1]?'✓ +'+it[2]+'%':'BELUM (+'+it[2]+'%)')+'</span></div>').join('');
   const p=prog();$('berRing').style.strokeDashoffset=314-314*p/100;$('berRingTxt').textContent=p+'%';}
  $('btnLanjut').onclick=()=>{
   const o=[['tujuan','tujuan'],['materi','materi'],['eksT','lab'],['eksL','lab'],['banding','lab'],['vis2d','vis2d'],['lks','lks'],['tantangan','tantangan'],['evaluasi','evaluasi']];
   const nx=o.find(x=>!S.f[x[0]]);
-  if(nx)go(nx[1]);else{go('hasil');toast('🎉 Semua KELANA selesai — lihat Hasil Belajarmu!');}};
+  if(nx)go(nx[1]);else{go('hasil');toast('🎉 Semua misi selesai — lihat Hasil Belajarmu!');}};
 
-/* ============ KELANA ============ */
-function refreshKELANA(){
+/* ============ MISI ============ */
+function refreshMisi(){
   $('misHip').value=S.lks.hip||'';
   const ok=!!(S.lks.hip&&S.lks.hip.trim());
   $('btnGoLab').disabled=!ok;
@@ -1284,7 +1360,7 @@ function refreshKELANA(){
     :'Simpan hipotesismu terlebih dahulu untuk membuka pintu laboratorium.';}
  $('btnHipSave').onclick=()=>{const v=$('misHip').value.trim();
   if(!v){toast('⚠️ Tulis hipotesismu terlebih dahulu.','warn');AU.sfx('no');return;}
-  S.lks.hip=v;save();AU.sfx('win');refreshKELANA();hdr();
+  S.lks.hip=v;save();AU.sfx('win');refreshMisi();hdr();
   toast('💾 Hipotesis tersimpan & otomatis terekam di LKS Digital.');};
  $('btnGoLab').onclick=()=>go('lab');
 
@@ -1293,17 +1369,17 @@ function initMateri(){
   new Wave($('matCvT'),{type:'T',viewM:3,A:.3,lam:1.1,f:.6,rambat:1,env:1}).go=1;
   new Wave($('matCvL'),{type:'L',viewM:3,A:.09,lam:1.1,f:.6,rambat:1,dens:1}).go=1;}
  $('btnMatDone').onclick=()=>{const f=!S.f.materi;setFlag('materi');AU.sfx('win');
-  toast('🎉 Materi dipelajari'+(f?' — progres diperbarui!':'')+'. Lanjut ke KELANA Laboratorium!');go('KELANA');};
+  toast('🎉 Materi dipelajari'+(f?' — progres diperbarui!':'')+'. Lanjut ke Misi Laboratorium!');go('misi');};
  $('btnTjDone').onclick=()=>{setFlag('tujuan');AU.sfx('win');
   toast('🎯 Tujuan pembelajaran dipahami — progres diperbarui!');};
 
 /* ============ LAB ============ */
 const EXPCFG={
   t:{pfx:'t',type:'T',title:'GELOMBANG TRANSVERSAL',obj:'TALI VIRTUAL',flag:'eksT',mis:'m1',
-     KELANA:'TARGET · DETEKSI TRANSVERSAL',Amin:.1,Amax:.6,Astep:.01,defA:.35,lamMin:.4,lamMax:2.5,rul:[1.5,2.7],
+     misi:'TARGET · DETEKSI TRANSVERSAL',Amin:.1,Amax:.6,Astep:.01,defA:.35,lamMin:.4,lamMax:2.5,rul:[1.5,2.7],
      ck:['Jalankan simulasi minimal 5 detik (▶ MULAI)','Ukur panjang gelombang (λ) dengan penggaris','Hitung frekuensi dengan stopwatch (n & t)']},
   l:{pfx:'l',type:'L',title:'GELOMBANG LONGITUDINAL',obj:'PEGAS / SLINKY VIRTUAL',flag:'eksL',mis:'m2',
-     KELANA:'TARGET · DETEKSI LONGITUDINAL',Amin:.02,Amax:.15,Astep:.005,defA:.1,lamMin:.6,lamMax:2.2,rul:[.6,1.8],
+     misi:'TARGET · DETEKSI LONGITUDINAL',Amin:.02,Amax:.15,Astep:.005,defA:.1,lamMin:.6,lamMax:2.2,rul:[.6,1.8],
      ck:['Jalankan simulasi minimal 5 detik (▶ MULAI)','Ukur jarak dua rapatan (λ) dengan penggaris','Hitung frekuensi dengan stopwatch (n & t)']}};
 const LAB={};let bSec=0;
 const TABREQ={t:null,l:'eksT',banding:'eksL',partikel:'banding'};
@@ -1324,64 +1400,56 @@ function recordData(){
     if(n>0){if(S.auto.length>30)S.auto=S.auto.slice(-30);save();
       if(curView=='lks')fillAutoTbl();}
   }catch(e){}}
-function paneHTML(c){const p=c.pfx;return `
-<div class="lhead"><b>${c.title}</b><span class="obj">OBJEK: ${c.obj}</span></div>
-
-<canvas class="simcv" id="${p}Cv"></canvas>
-<div class="statline" id="${p}Stat">🧊 BENTUK STATIS — geser slider untuk mengubah bentuk · tekan ▶ MULAI agar gelombang merambat</div>
-<div class="hint">📏 Aktifkan <b>PENGUKURAN</b> lalu geser penanda <b class="hl">A</b> dan <b class="ha">B</b>: jarak ${c.type=='T'?'dua puncak berurutan':'dua rapatan berurutan'} = <b>λ</b>. Garis amplop <b class="hl">+A / −A</b> = simpangan maksimum.</div>
-
-<div class="btnrow">
-  <button class="btn sm pri" id="${p}Start">▶ MULAI</button>
-  <button class="btn sm" id="${p}Pause">⏸ JEDA</button>
-  <button class="btn sm" id="${p}Reset">🔄 RESET</button>
-  <button class="btn sm tgl" id="${p}Getar">👁️ ARAH GETARAN</button>
-  <button class="btn sm tgl on" id="${p}Rambat">➡️ ARAH RAMBAT</button>
-  <button class="btn sm tgl" id="${p}Mark">🏷️ ${c.type=='T'?'PUNCAK & LEMBAH':'RAPATAN & RENGGANGAN'}</button>
-  <button class="btn sm tgl" id="${p}Ukur">📏 PENGUKURAN</button>
-  <button class="btn sm tgl" id="${p}SwB">⏱️ STOPWATCH</button>
-</div>
-<div class="rulc">λ terukur: <span id="${p}Rul">belum diukur</span></div>
-
-<div class="lgrid2">
-  <div class="ctl">
-    <h4>PANEL KONTROL — geser slider, BENTUK gelombang di atas langsung berubah</h4>
-    <div class="sld"><label>AMPLITUDE <b id="${p}VA">–</b></label><input type="range" id="${p}A" min="${c.Amin}" max="${c.Amax}" step="${c.Astep}" value="${c.defA}"></div>
-    <div class="sld"><label>FREKUENSI <b id="${p}VF">–</b></label><input type="range" id="${p}F" min="0.2" max="2" step="0.05" value="0.6"></div>
-    <div class="sld"><label>PANJANG GELOMBANG λ <b id="${p}VL">–</b></label><input type="range" id="${p}L" min="${c.lamMin}" max="${c.lamMax}" step="0.05" value="1.2"></div>
-    <div class="sld"><label>CEPAT RAMBAT v <b id="${p}VS">–</b></label><input type="range" id="${p}S" min="0.05" max="4.5" step="0.05" value="0.72"></div>
-    <div class="eq" id="${p}EQ"></div>
-    <div class="amplab">
-      <h4>⚡ EFEK AMPLITUDO</h4>
-      <div class="sub">E ∝ A² · I ∝ A² — energi & intensitas sebanding kuadrat amplitudo</div>
-      <div class="ampline"><span>Energi gelombang</span><div class="ebar"><div id="${p}Ener"></div></div><b id="${p}EnerV">–</b></div>
-      <div class="ampline"><span>Intensitas bunyi</span><div class="ebar"><div id="${p}Int"></div></div><b id="${p}IntV">–</b></div>
-      <div class="ampkv" id="${p}AmpKV"></div>
-      <div class="btnrow"><button class="btn sm" id="${p}Tone">🔊 DENGARKAN GETARAN</button></div>
-      <div class="hint">Saat suara aktif: geser <b>AMPLITUDE</b> → bunyi makin <b>nyaring/keras</b>; geser <b>FREKUENSI</b> → nada makin tinggi. Amplitudo tidak mengubah nada!</div>
-    </div>
-    <div class="fb" id="${p}FB"></div>
-  </div>
-  <div>
-    <div class="swp hidden" id="${p}SwP">
-      <div class="swd" id="${p}SwT">0,0 s</div>
-      <div class="btnrow"><button class="btn sm pri" id="${p}SwGo">⏱️ MULAI</button><button class="btn sm" id="${p}SwR">🔄 RESET</button></div>
-      <div class="swc">
-        <div>Jumlah getaran (n)<input type="number" id="${p}SwN" min="0" value="0"></div>
-        <div>f = n / t<b id="${p}SwF">–</b></div>
-        <div style="grid-column:1/3">v = λ × f = <b id="${p}SwV">–</b></div>
-      </div>
-      <div class="hint">Hitung jumlah getaran lengkap satu partikel selama stopwatch berjalan, lalu isi n.</div>
-    </div>
-  </div>
-</div>
-
-<div class="mpanel">
-  <h4>${c.KELANA}</h4>
-  <div class="ckl" id="${p}Ck"></div>
-  <button class="btn pri" id="${p}Fin" disabled style="width:100%;justify-content:center;margin-top:9px">✓ REKAM DATA & SELESAIKAN</button>
-  <div class="hint">💡 <b>Tidak ada batas percobaan.</b> Setiap penekanan ✓ REKAM DATA mencatat hasil terkinimu otomatis ke LKS. Setelah itu, ubah amplitudo/frekuensi, amati & ukur ulang, lalu tekan lagi — ulangi hingga datamu stabil dan hasil terbaikmu tercapai!</div>
-</div>`;}
+/* Dibangun dengan penggabungan string (tanpa backtick) agar tahan salin-tempel */
+function paneHTML(c){const p=c.pfx;
+  const mark=c.type=='T'?'PUNCAK & LEMBAH':'RAPATAN & RENGGANGAN';
+  const rulHint=c.type=='T'?'dua puncak berurutan':'dua rapatan berurutan';
+  return '<div class="lhead"><b>'+c.title+'</b><span class="obj">OBJEK: '+c.obj+'</span></div>'
+  +'<canvas class="simcv" id="'+p+'Cv"></canvas>'
+  +'<div class="statline" id="'+p+'Stat">🧊 BENTUK STATIS — geser slider untuk mengubah bentuk · tekan ▶ MULAI agar gelombang merambat</div>'
+  +'<div class="hint">📏 Aktifkan <b>PENGUKURAN</b> lalu geser penanda <b class="hl">A</b> dan <b class="ha">B</b>: jarak '+rulHint+' = <b>λ</b>. Garis amplop <b class="hl">+A / −A</b> = simpangan maksimum.</div>'
+  +'<div class="btnrow">'
+  +'<button class="btn sm pri" id="'+p+'Start">▶ MULAI</button>'
+  +'<button class="btn sm" id="'+p+'Pause">⏸ JEDA</button>'
+  +'<button class="btn sm" id="'+p+'Reset">🔄 RESET</button>'
+  +'<button class="btn sm tgl" id="'+p+'Getar">👁️ ARAH GETARAN</button>'
+  +'<button class="btn sm tgl on" id="'+p+'Rambat">➡️ ARAH RAMBAT</button>'
+  +'<button class="btn sm tgl" id="'+p+'Mark">🏷️ '+mark+'</button>'
+  +'<button class="btn sm tgl" id="'+p+'Ukur">📏 PENGUKURAN</button>'
+  +'<button class="btn sm tgl" id="'+p+'SwB">⏱️ STOPWATCH</button>'
+  +'</div>'
+  +'<div class="rulc">λ terukur: <span id="'+p+'Rul">belum diukur</span></div>'
+  +'<div class="lgrid2">'
+  +'<div class="ctl"><h4>PANEL KONTROL — geser slider, BENTUK gelombang di atas langsung berubah</h4>'
+  +'<div class="sld"><label>AMPLITUDE <b id="'+p+'VA">–</b></label><input type="range" id="'+p+'A" min="'+c.Amin+'" max="'+c.Amax+'" step="'+c.Astep+'" value="'+c.defA+'"></div>'
+  +'<div class="sld"><label>FREKUENSI <b id="'+p+'VF">–</b></label><input type="range" id="'+p+'F" min="0.2" max="2" step="0.05" value="0.6"></div>'
+  +'<div class="sld"><label>PANJANG GELOMBANG λ <b id="'+p+'VL">–</b></label><input type="range" id="'+p+'L" min="'+c.lamMin+'" max="'+c.lamMax+'" step="0.05" value="1.2"></div>'
+  +'<div class="sld"><label>CEPAT RAMBAT v <b id="'+p+'VS">–</b></label><input type="range" id="'+p+'S" min="0.05" max="4.5" step="0.05" value="0.72"></div>'
+  +'<div class="eq" id="'+p+'EQ"></div>'
+  +'<div class="amplab"><h4>⚡ EFEK AMPLITUDO</h4>'
+  +'<div class="sub">E ∝ A² · I ∝ A² — energi & intensitas sebanding kuadrat amplitudo</div>'
+  +'<div class="ampline"><span>Energi gelombang</span><div class="ebar"><div id="'+p+'Ener"></div></div><b id="'+p+'EnerV">–</b></div>'
+  +'<div class="ampline"><span>Intensitas bunyi</span><div class="ebar"><div id="'+p+'Int"></div></div><b id="'+p+'IntV">–</b></div>'
+  +'<div class="ampkv" id="'+p+'AmpKV"></div>'
+  +'<div class="btnrow"><button class="btn sm" id="'+p+'Tone">🔊 DENGARKAN GETARAN</button></div>'
+  +'<div class="hint">Saat suara aktif: geser <b>AMPLITUDE</b> → bunyi makin <b>nyaring/keras</b>; geser <b>FREKUENSI</b> → nada makin tinggi. Amplitudo tidak mengubah nada!</div>'
+  +'</div>'
+  +'<div class="fb" id="'+p+'FB"></div></div>'
+  +'<div><div class="swp hidden" id="'+p+'SwP">'
+  +'<div class="swd" id="'+p+'SwT">0,0 s</div>'
+  +'<div class="btnrow"><button class="btn sm pri" id="'+p+'SwGo">⏱️ MULAI</button><button class="btn sm" id="'+p+'SwR">🔄 RESET</button></div>'
+  +'<div class="swc">'
+  +'<div>Jumlah getaran (n)<input type="number" id="'+p+'SwN" min="0" value="0"></div>'
+  +'<div>f = n / t<b id="'+p+'SwF">–</b></div>'
+  +'<div style="grid-column:1/3">v = λ × f = <b id="'+p+'SwV">–</b></div>'
+  +'</div>'
+  +'<div class="hint">Hitung jumlah getaran lengkap satu partikel selama stopwatch berjalan, lalu isi n.</div>'
+  +'</div></div></div>'
+  +'<div class="mpanel"><h4>'+c.misi+'</h4>'
+  +'<div class="ckl" id="'+p+'Ck"></div>'
+  +'<button class="btn pri" id="'+p+'Fin" disabled style="width:100%;justify-content:center;margin-top:9px">✓ REKAM DATA & SELESAIKAN</button>'
+  +'<div class="hint">💡 <b>Tidak ada batas percobaan.</b> Setiap penekanan ✓ REKAM DATA mencatat hasil terkinimu otomatis ke LKS. Setelah itu, ubah amplitudo/frekuensi, amati & ukur ulang, lalu tekan lagi — ulangi hingga datamu stabil dan hasil terbaikmu tercapai!</div>'
+  +'</div>';}
 function fb(p,t){$(p+'FB').textContent='⚙️ '+t;AU.sfx('click');}
 function setStat(p,st){const el=$(p+'Stat');if(!el)return;
   el.className='statline'+(st=='run'?' run':st=='pause'?' pause':'');
@@ -1577,7 +1645,7 @@ function lksPrint(){
     :'<tr><td colspan="8">Belum ada data percobaan.</td></tr>';
   const ansHtml=ANAQ.map((q,i)=>'<div class="qa"><div class="q">'+q[0]+'</div><div class="a">'+esc(S.lks.ans[i]&&S.lks.ans[i].trim()?S.lks.ans[i]:'(belum dijawab)')+'</div></div>').join('');
   $('printArea').innerHTML=
-  '<h1>🌊 KELANA GELOMBANG — LKS DIGITAL</h1>'
+  '<h1>🌊 MISI GELOMBANG — LKS DIGITAL</h1>'
   +'<p class="sub1">Laboratorium Maya IPA SMP Kelas VIII — Gelombang Transversal & Longitudinal</p>'
   +'<h2>A. Identitas Peneliti</h2>'
   +'<table><tr><th style="width:18%">Nama</th><td style="width:32%">'+esc(u.nama)+'</td><th style="width:14%">Kelas</th><td style="width:16%">'+esc(u.kelas)+'</td><th style="width:9%">Kel.</th><td>'+esc(u.kelompok)+'</td></tr>'
@@ -1674,7 +1742,7 @@ function chEnd(){
     AU.sfx('win');}
   $('chSummary').classList.remove('hidden');
   $('chSummary').innerHTML='<h3>🏁 HASIL TANTANGAN</h3><p class="muted" style="font-size:14.5px">Benar: <b class="hl">'
-    +benar+' / '+CHD.length+'</b>'+(n>=CHD.length?' — KELANA Detektif Gelombang tuntas!':' — masih ada tantangan yang belum dijawab.')+'</p>';}
+    +benar+' / '+CHD.length+'</b>'+(n>=CHD.length?' — Misi Detektif Gelombang tuntas!':' — masih ada tantangan yang belum dijawab.')+'</p>';}
 
 /* ============ EVALUASI ============ */
 let EV={cur:0,ans:{},done:false};
@@ -1761,7 +1829,7 @@ function submitEval(){
   toast('🧠 Evaluasi selesai! Skor: '+skor+'/100');}
 
 /* ============ HASIL BELAJAR + SERTIFIKAT ============ */
-function kategori(sk){return sk==null?'—':sk>=90?'🏆 MASTER PENELITI GELOMBANG':sk>=80?'🥇 PENELITI UNGGUL':sk>=70?'🥈 PENELITI BERKEMBANG':'🔄 ULANGI KELANA';}
+function kategori(sk){return sk==null?'—':sk>=90?'🏆 MASTER PENELITI GELOMBANG':sk>=80?'🥇 PENELITI UNGGUL':sk>=70?'🥈 PENELITI BERKEMBANG':'🔄 ULANGI MISI';}
 function renderHasil(){const u=S.u,p=prog();
   const ckl=[['Tujuan Pembelajaran',S.f.tujuan],['Materi',S.f.materi],['Eksperimen Transversal',S.f.eksT],
     ['Eksperimen Longitudinal',S.f.eksL],['Visualisasi Animasi 2D',S.f.vis2d],['LKS Digital',S.f.lks],
@@ -1773,12 +1841,12 @@ function renderHasil(){const u=S.u,p=prog();
   let cert;
   if(certOK){
     cert='<div class="cert"><div class="cT">SERTIFIKAT HASIL BELAJAR</div>'
-    +'<h4>🌊 KELANA GELOMBANG</h4>'
+    +'<h4>🌊 MISI GELOMBANG</h4>'
     +'<div class="cSub">Laboratorium Maya IPA · Gelombang Transversal & Longitudinal · SMP Kelas VIII / Fase D</div>'
     +'<div style="margin-top:14px;font-size:12px;color:var(--tx3);letter-spacing:2px">DIBERIKAN KEPADA</div>'
     +'<div class="cName">'+esc(u.nama)+'</div>'
     +'<div class="cSub">Kelas: '+esc(u.kelas)+' · Kelompok: '+esc(u.kelompok)+'</div>'
-    +'<p class="cSub" style="max-width:480px;margin:12px auto 0">telah menyelesaikan rangkaian KELANA pembelajaran pada Laboratorium Maya “KELANA Gelombang” — menguraikan karakteristik getaran serta membedakan gelombang transversal dan longitudinal.</p>'
+    +'<p class="cSub" style="max-width:480px;margin:12px auto 0">telah menyelesaikan rangkaian misi pembelajaran pada Laboratorium Maya “Misi Gelombang” — menguraikan karakteristik getaran serta membedakan gelombang transversal dan longitudinal.</p>'
     +'<div class="cStats"><span>Skor <b>'+sk+'/100</b></span><span>XP <b>'+S.xp+'</b></span><span>Progres <b>'+p+'%</b></span></div>'
     +'<div class="cSub" style="margin-top:10px">Kategori: <b style="color:var(--tx)">'+kat+'</b></div>'
     +'<div class="cTtd">'+tgl+'<br><br><b>'+esc(u.guru)+'</b><br>Guru Ilmu Pengetahuan Alam</div>'
@@ -1797,12 +1865,12 @@ function renderHasil(){const u=S.u,p=prog();
   +'<div class="hzs"><div class="hzb"><small>SKOR EVALUASI</small><div class="big">'+(sk==null?'–':sk)+'</div></div>'
   +'<div class="hzb"><small>XP TOTAL</small><div class="big am">'+S.xp+'</div></div>'
   +'<div class="hzb"><small>PROGRES</small><div class="big">'+p+'%</div></div></div>'
-  +'<div class="bbox"><div style="font-size:40px">'+(S.f.evaluasi?'🏅':'🔒')+'</div><div class="bname">'
+ +'<div class="bbox"><div style="font-size:40px">'+(S.f.evaluasi?'🏅':'🔒')+'</div><div class="bname">'
   +(S.f.evaluasi?'🏅 DETEKTIF GELOMBANG':'🔒 Selesaikan evaluasi untuk membuka badge')
   +'</div><p class="muted" style="margin-top:5px">Kategori: <b style="color:var(--tx)">'+kat+'</b></p></div></div>'
   +'<div class="card" style="margin-top:15px"><h3>🎖️ SERTIFIKAT HASIL BELAJAR</h3>'+cert
   +'<div class="btnrow"><button class="btn pri" id="btnCert"'+(certOK?'':' disabled')+'>🖨️ CETAK / SIMPAN SERTIFIKAT (PDF)</button></div></div>'
-  +'<div class="card" style="margin-top:15px"><h3>⚠️ KELOLA DATA</h3><p class="muted">Seluruh data (identitas, progres, XP, hasil eksperimen, LKS, hasil tantangan & evaluasi) tersimpan otomatis di perangkat ini dan tetap ada meski browser ditutup. Untuk keluar dari aplikasi, gunakan <b>🚪 Keluar</b> di sidebar — data tetap tersimpan.</p>'
+  +'<div class="card" style="margin-top:15px"><h3>⚠️ KELOLA DATA</h3><p class="muted">Seluruh data (identitas, progres, XP, hasil eksperimen, LKS, hasil tantangan & evaluasi) tersimpan otomatis di perangkat ini dan tetap ada meski browser ditutup. Untuk keluar dari aplikasi, gunakan <b>🚪 Keluar</b> di sidebar atau <b>🌊 Akhiri Misi</b> di menu Referensi — data tetap tersimpan.</p>'
   +'<div class="btnrow"><button class="btn danger" id="btnDel">🗑️ HAPUS SEMUA DATA</button></div></div>';
   $('btnCert').onclick=()=>{certPrint();AU.sfx('click');};
   $('btnDel').onclick=async()=>{AU.sfx('click');
@@ -1813,12 +1881,12 @@ function certPrint(){const u=S.u,p=prog(),sk=S.ev?S.ev.best:0,kat=kategori(sk);
   $('printArea').innerHTML=
   '<div style="border:4px double #000;padding:36px 26px;text-align:center">'
   +'<div style="letter-spacing:6px;font-size:12pt">SERTIFIKAT HASIL BELAJAR</div>'
-  +'<div style="font-size:16pt;font-weight:bold;margin-top:10px">LABORATORIUM MAYA IPA — “KELANA GELOMBANG”</div>'
+  +'<div style="font-size:16pt;font-weight:bold;margin-top:10px">LABORATORIUM MAYA IPA — “MISI GELOMBANG”</div>'
   +'<div style="font-size:10.5pt;margin-top:4px">Gelombang Transversal & Longitudinal · IPA SMP Kelas VIII / Fase D</div>'
   +'<div style="margin:24px 0 6px;font-size:11pt;letter-spacing:2px">DIBERIKAN KEPADA:</div>'
   +'<div style="font-size:20pt;font-weight:bold;border-bottom:2px solid #000;display:inline-block;padding:0 26px 4px">'+esc(u.nama)+'</div>'
   +'<div style="font-size:11pt;margin-top:8px">Kelas: '+esc(u.kelas)+' &nbsp;|&nbsp; Kelompok: '+esc(u.kelompok)+'</div>'
-  +'<p style="font-size:10.5pt;margin:18px auto 0;max-width:440px;line-height:1.7">telah menyelesaikan rangkaian KELANA pembelajaran pada Laboratorium Maya “KELANA Gelombang” — menguraikan karakteristik getaran serta membedakan gelombang transversal dan longitudinal.</p>'
+  +'<p style="font-size:10.5pt;margin:18px auto 0;max-width:440px;line-height:1.7">telah menyelesaikan rangkaian misi pembelajaran pada Laboratorium Maya “Misi Gelombang” — menguraikan karakteristik getaran serta membedakan gelombang transversal dan longitudinal.</p>'
   +'<p style="font-size:11.5pt;margin-top:16px"><b>Skor: '+sk+' / 100</b> &nbsp;·&nbsp; XP: '+S.xp+' / 100 &nbsp;·&nbsp; Progres: '+p+'%</p>'
   +'<p style="font-size:11pt">Kategori: <b>'+kat+'</b></p>'
   +'<p style="margin-top:44px;font-size:10.5pt">'+tgl+'<br><br><br><br>'
@@ -1826,8 +1894,24 @@ function certPrint(){const u=S.u,p=prog(),sk=S.ev?S.ev.best:0,kat=kategori(sk);
   +'</div>';
   window.print();}
 
+/* ============ DELEGASI GLOBAL: semua tombol keluar & akhiri misi ============ */
+document.addEventListener('click',function(e){
+  const t=(e.target&&e.target.closest)?e.target.closest('#btnLogout,#btnRefLogout,#btnEnd,#quoteLogout,#quoteClose,#outOk,#outCancel'):null;
+  if(!t)return;
+  switch(t.id){
+    case 'btnEnd':endMissionShow();break;
+    case 'quoteClose':closeQuote();break;
+    case 'btnLogout':case 'btnRefLogout':case 'quoteLogout':askLogout();break;
+    case 'outOk':$('outModal').classList.add('hidden');doLogout();
+      AU.sfx('win');
+      toast(S.u?'👋 Sampai jumpa, <b>'+esc(S.u.nama)+'</b>!<br><small>Datamu tetap tersimpan — tekan “🚀 MASUK KE LABORATORIUM” untuk melanjutkan.</small>'
+               :'👋 Terima kasih telah menjelajahi <b>Misi Gelombang</b>!',0,4500);break;
+    case 'outCancel':$('outModal').classList.add('hidden');break;
+  }});
+
 /* ============ BOOT ============ */
 hdr();
+try{console.log('%c🌊 MISI GELOMBANG — skrip dimuat sempurna, semua tombol aktif','color:#2fe6c8;font-weight:bold');}catch(e){}
 </script>
 </body>
 </html>
