@@ -117,9 +117,13 @@ background:rgba(12,22,36,.75);color:var(--tx);font-size:14px;font-weight:600;tra
 .nvi.out{color:var(--red);margin-top:8px;border-top:1px dashed var(--line2);padding-top:12px}
 .nvi.out:hover{color:var(--red);background:rgba(255,107,122,.08)}
 .sbft{margin-top:auto;padding:10px 4px;font-size:8px;color:var(--tx3);line-height:1.6;border-top:1px solid var(--line);text-align:center}
+/* Sidebar dapat disembunyikan/dimunculkan melalui tombol ☰. */
+#sidebar{transition:width .28s ease, padding .28s ease, transform .28s ease, opacity .2s ease;overflow-x:hidden}
+#sidebar.collapsed{width:0!important;padding-left:0!important;padding-right:0!important;border-right-color:transparent!important;opacity:0;pointer-events:none}
+#sidebar.collapsed *{visibility:hidden}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
 #hdr{height:64px;flex-shrink:0;display:flex;align-items:center;gap:13px;padding:0 16px;border-bottom:1px solid var(--line);background:rgba(6,11,20,.88)}
-#burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--tx);font-size:17px}
+#burger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--tx);font-size:17px;cursor:pointer;flex:0 0 40px}
 .hdrLogo{width:20px;height:20px;object-fit:contain;display:block;flex:0 0 20px;border-radius:3px}.hT{font-family:var(--fd);font-weight:700;white-space:nowrap}
 .hU{font-size:12px;color:var(--tx2);line-height:1.35;min-width:0}
 .hU b{color:var(--tx);display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -732,6 +736,8 @@ body::before{
     background:rgba(7,11,27,.96);
   }
   #sidebar.open{box-shadow:30px 0 90px rgba(0,0,0,.62)}
+  #sidebar.collapsed{width:104px!important;padding:14px 8px!important;border-right-color:rgba(157,188,255,.11)!important;opacity:1;pointer-events:auto;transform:translateX(-105%)}
+  #sidebar.collapsed *{visibility:visible}
 }
 @media (max-width:640px){
   #hdr{height:62px;padding:0 12px}
@@ -975,7 +981,7 @@ main [data-nav]::after,
 </style>
 
 
-<style id="developer-photo-final">
+<style id="developer-photo-circle-final">
 .developer-photo{
   display:block!important;
   width:100%!important;
@@ -1167,7 +1173,7 @@ main [data-nav]::after,
   <div id="scrim" class="hidden"></div>
   <div class="main">
     <header id="hdr">
-      <button id="burger">☰</button>
+      <button id="burger" type="button" aria-label="Tampilkan atau sembunyikan menu navigasi" aria-controls="sidebar" aria-expanded="true">☰</button>
       <div class="hT"><span class="hdrWave">🌊</span><span>MISI GELOMBANG</span></div>
       <div class="hU"><b id="hdrGreet">Halo!</b><span id="hdrInfo"></span></div>
       <div class="hP"><span class="plbl">PROGRES MISI</span><div class="pbar"><div id="hdrFill"></div></div><b id="hdrPct">0%</b></div>
@@ -2088,12 +2094,37 @@ function go(v,playSound=true){try{
     try{AU.init();AU.sfx('menu');}catch(e){}
     go(b.dataset.view);
   });
-function closeSb(){$('sidebar').classList.remove('open');$('scrim').classList.add('hidden');}
- $('burger').onclick=()=>{
-    try{AU.init();AU.sfx('menu');}catch(e){}
-    $('sidebar').classList.add('open');$('scrim').classList.remove('hidden');
-  };
- $('scrim').onclick=closeSb;
+function syncSidebarA11y(){
+  const sb=$('sidebar'), b=$('burger'); if(!sb||!b)return;
+  const mobile=window.matchMedia('(max-width:1024px)').matches;
+  const visible=mobile?sb.classList.contains('open'):!sb.classList.contains('collapsed');
+  b.setAttribute('aria-expanded',visible?'true':'false');
+  sb.setAttribute('aria-hidden',visible?'false':'true');
+}
+function closeSb(){
+  const sb=$('sidebar'); if(!sb)return;
+  sb.classList.remove('open');
+  $('scrim').classList.add('hidden');
+  syncSidebarA11y();
+}
+function toggleSb(){
+  try{AU.init();AU.sfx('menu');}catch(e){}
+  const sb=$('sidebar'); if(!sb)return;
+  const mobile=window.matchMedia('(max-width:1024px)').matches;
+  if(mobile){
+    sb.classList.toggle('open');
+    $('scrim').classList.toggle('hidden',!sb.classList.contains('open'));
+  }else{
+    sb.classList.toggle('collapsed');
+    $('scrim').classList.add('hidden');
+  }
+  syncSidebarA11y();
+}
+$('burger').onclick=toggleSb;
+$('scrim').onclick=closeSb;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSb();});
+window.addEventListener('resize',()=>{syncSidebarA11y();});
+syncSidebarA11y();
 function navFoot(){
   ORDER.forEach((v,i)=>{
     const sec=$('view-'+v);if(!sec)return;
@@ -2205,7 +2236,7 @@ function renderBeranda(){const u=S.u;
     ['Menyelesaikan evaluasi',S.f.evaluasi,20]];
   $('berMisi').innerHTML=items.map((it,i)=>
     '<div class="mrow2"><span class="num">'+(i+1)+'</span><span>'+it[0]+'</span><span class="st '+(it[1]?'done':'')+'">'+(it[1]?'✓ +'+it[2]+'%':'BELUM (+'+it[2]+'%)')+'</span></div>').join('');
-  const p=prog();$('berRing').style.strokeDashoffset=439.82-439.82*p/100;$('berRingTxt').textContent=p+'%';}
+  const p=prog();$('berRing').style.strokeDashoffset=439.822971502571-439.822971502571*p/100;$('berRingTxt').textContent=p+'%';}
  $('btnLanjut').onclick=()=>{
   AU.sfx('click');
   const o=[
