@@ -886,6 +886,46 @@ img[src="foto-pengembang.jpg"]{
 }
 </style>
 
+
+<style id="remove-main-menu-arrows">
+/* Hapus indikator/tanda panah pada menu utama */
+main .menu-arrow,
+main .nav-arrow,
+main .arrow,
+main .chevron,
+main .menu-item::after,
+main .nav-item::after,
+main [data-nav]::after,
+#main .menu-arrow,
+#main .nav-arrow,
+#main .arrow,
+#main .chevron,
+#main .menu-item::after,
+#main .nav-item::after,
+#main [data-nav]::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* Jika panah dibuat dari karakter HTML pada label menu */
+.menu-main .arrow,
+.menu-main .chevron,
+.menu-main .menu-arrow{
+  display:none!important;
+}
+</style>
+
+
+<style id="main-menu-arrow-final">
+/* Menu Utama: tidak menampilkan indikator/panah arah rambat dekoratif */
+#pg-home .menu-arrow,
+#pg-home .nav-arrow,
+#pg-home .arrow,
+#pg-home .chevron{
+  display:none!important;
+}
+</style>
+
 </head>
 <body>
 
@@ -913,7 +953,7 @@ img[src="foto-pengembang.jpg"]{
     <div class="qWave">🌊 ✨ 🌊</div>
     <blockquote>“Ingat, seperti <b>gelombang</b> yang terus bergerak, <b>rasa ingin tahu</b> juga harus terus mengantarkanmu menuju <b>penemuan baru</b>.”</blockquote>
     <div id="quoteExtra"></div>
-    <div class="qSign">Laboratorium Maya IPA — “Misi Gelombang”<br>Wilem Rilexen S P Mulder, S.Pd., M.Pd., Gr · SMP Negeri 65 Maluku Tengah</div>
+    <div class="qSign">Laboratorium Maya IPA — “Misi Gelombang”<br> · </div>
     <div class="qBtns">
       <button class="btn danger" id="quoteLogout">🚪 LOGOUT</button>
     </div>
@@ -1307,9 +1347,9 @@ img[src="foto-pengembang.jpg"]{
             <svg viewBox="0 0 100 100" width="146" height="146"><rect width="100" height="100" fill="#0e3d36"/><text x="50" y="63" text-anchor="middle" font-family="Chakra Petch" font-weight="700" font-size="36" fill="#2fe6c8">WR</text></svg>
             <img class="dp" src="foto.jpg" alt="Foto Pengembang" onerror="this.remove()">
           </div>
-          <h2>WILEM RILEXEN S P MULDER, S.Pd., M.Pd., Gr</h2>
+          <h2></h2>
           <div class="role">GURU IPA</div>
-          <p class="muted" style="margin-top:4px">SMP NEGERI 65 MALUKU TENGAH</p>
+          <p class="muted" style="margin-top:4px"></p>
           <div class="ai">“Media pembelajaran dikembangkan dengan bantuan AI.”</div>
         </div>
         </div>
@@ -1780,8 +1820,8 @@ try{
       ctx.fillStyle='#05080f';ctx.fillRect(0,0,W,H);
       this.s.forEach(p=>{ctx.fillStyle='rgba(150,230,215,'+(.12+p.r*.15).toFixed(2)+')';
         ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r,0,TAU);ctx.fill();});}});
-  new Wave($('heroT'),{type:'T',viewM:5,A:.26,lam:1.6,f:.5,grid:0,label:0}).go=1;
-  new Wave($('heroL'),{type:'L',viewM:5,A:.08,lam:1.5,f:.55,grid:0,dens:1,label:0}).go=1;
+  new Wave($('heroT'),{type:'T',viewM:5,A:.26,lam:1.6,f:.5,grid:0,label:0,rambat:0}).go=1;
+  new Wave($('heroL'),{type:'L',viewM:5,A:.08,lam:1.5,f:.55,grid:0,dens:1,label:0,rambat:0}).go=1;
 }catch(e){}
 
 /* ============ HOME & REGISTRASI ============ */
@@ -1868,7 +1908,7 @@ function navFoot(){
   ORDER.forEach((v,i)=>{
     const sec=$('view-'+v);if(!sec)return;
     const d=document.createElement('div');d.className='navpg';
-    d.innerHTML='<button class="btn" data-nav="'+(i>0?ORDER[i-1]:'')+'"'+(i===0?' disabled':'')+'>← '+
+    d.innerHTML='<button class="btn" data-nav="'+(i>0?ORDER[i-1]:'')+'"'+(i===0?' disabled':'')+'>'+
       (i>0?labelOf(ORDER[i-1]):'Awal')+'</button>'+
       '<button class="btn pri" data-nav="'+(i<ORDER.length-1?ORDER[i+1]:'')+'"'+(i===ORDER.length-1?' disabled':'')+'>'+
       (i<ORDER.length-1?labelOf(ORDER[i+1]):'Akhir')+' →</button>';
