@@ -926,6 +926,66 @@ main [data-nav]::after,
 }
 </style>
 
+
+<style id="developer-photo-final">
+.developer-photo{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:50%!important;
+  margin:0!important;
+}
+.developer-avatar{
+  width:110px!important;
+  height:110px!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+  padding:0!important;
+}
+</style>
+
+
+<style id="developer-card-real-photo-final">
+.developer-final-card{
+  text-align:center!important;
+}
+.developer-photo-wrap{
+  width:146px!important;
+  height:146px!important;
+  margin:0 auto 16px!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+  padding:0!important;
+  background:#0e3d36!important;
+  border:2px solid #2fe6c8!important;
+  box-shadow:0 0 0 8px rgba(47,230,200,.08),0 0 24px rgba(47,230,200,.22)!important;
+}
+.developer-photo-real{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:50%!important;
+}
+.developer-final-card h2{
+  margin:8px auto 4px!important;
+  line-height:1.35!important;
+}
+</style>
+
+
+<style id="resume-history-final">
+#outModal .mbtns{gap:8px}
+#outModal .mbtns .btn{min-height:42px}
+@media(max-width:640px){
+  #outModal .mbtns{display:grid;grid-template-columns:1fr}
+  #outModal .mbtns .btn{width:100%;justify-content:center}
+}
+</style>
+
 </head>
 <body>
 
@@ -976,7 +1036,8 @@ main [data-nav]::after,
     <div class="hbtns">
       <button class="btn" id="homeTj">🎯 TUJUAN PEMBELAJARAN</button>
       <button class="btn" id="homePnd">📖 PANDUAN PENGGUNAAN</button>
-      <button class="btn pri" id="homeGo">🚀 MASUK KE LABORATORIUM</button>
+      <button class="btn pri" id="homeGo">🚀 MULAI MISI</button>
+      <button class="btn" id="homeNew">🆕 MULAI DARI AWAL</button>
     </div>
     <div class="hmeta"></div>
   </div>
@@ -1342,14 +1403,13 @@ main [data-nav]::after,
       <section class="view hidden" id="view-pengembang">
         <div class="lockbody" id="body-pengembang">
         <div class="vT">👤 PENGEMBANG</div>
-        <div class="card dev">
-          <div class="ava">
-            <svg viewBox="0 0 100 100" width="146" height="146"><rect width="100" height="100" fill="#0e3d36"/><text x="50" y="63" text-anchor="middle" font-family="Chakra Petch" font-weight="700" font-size="36" fill="#2fe6c8">WR</text></svg>
-            <img class="dp" src="foto.jpg" alt="Foto Pengembang" onerror="this.remove()">
+        <div class="card dev developer-final-card">
+          <div class="ava developer-photo-wrap">
+            <img class="dp developer-photo-real" src="foto-pengembang.jpg" alt="Foto Pengembang — Wilem Rilexen S P Mulder">
           </div>
-          <h2></h2>
+          <h2>WILEM RILEXEN S P MULDER, S.Pd., M.Pd., Gr</h2>
           <div class="role">GURU IPA</div>
-          <p class="muted" style="margin-top:4px"></p>
+          <p class="muted" style="margin-top:4px">SMP NEGERI 65 MALUKU TENGAH</p>
           <div class="ai">“Media pembelajaran dikembangkan dengan bantuan AI.”</div>
         </div>
         </div>
@@ -1402,7 +1462,11 @@ main [data-nav]::after,
 </div></div>
 <div id="outModal" class="hidden"><div class="modal">
   <h3 id="outTitle">Keluar dari Lab Maya</h3><p id="outMsg"></p>
-  <div class="mbtns"><button class="btn" id="outCancel">BATAL</button><button class="btn danger" id="outOk">🚪 LOGOUT</button></div>
+  <div class="mbtns" style="flex-wrap:wrap">
+    <button class="btn" id="outCancel">BATAL</button>
+    <button class="btn pri" id="outSave">💾 SIMPAN RIWAYAT & KELUAR</button>
+    <button class="btn danger" id="outDelete">🗑️ HAPUS RIWAYAT & KELUAR</button>
+  </div>
 </div></div>
 <div id="printArea"></div>
 
@@ -1831,10 +1895,60 @@ buildTjAcc($('tjAcc'));
  $('homePnd').onclick=()=>{AU.sfx('click');$('ovPnd').classList.remove('hidden');};
  $('ovTjC').onclick=()=>$('ovTj').classList.add('hidden');
  $('ovPndC').onclick=()=>$('ovPnd').classList.add('hidden');
- $('homeGo').onclick=()=>{AU.sfx('start');
-  if(S.u){$('regNama').value=S.u.nama;$('regKelas').value=S.u.kelas;$('regKel').value=S.u.kelompok;$('regGuru').value=S.u.guru;
-    $('regMsg').textContent='✓ Data ditemukan — tekan MULAI MISI untuk melanjutkan.';$('regMsg').className='regmsg ok';}
-  $('pg-home').classList.add('hidden');$('pg-reg').classList.remove('hidden');};
+ function resetForNewMission(){
+  try{localStorage.removeItem(KEY);}catch(e){}
+  S=blank();
+
+  ['regNama','regKelas','regKel','regGuru'].forEach(id=>{
+    const el=$(id);if(el)el.value='';
+  });
+  const msg=$('regMsg');
+  if(msg){msg.textContent='';msg.className='regmsg';}
+
+  try{
+    if(typeof v2Seen!=='undefined' && v2Seen instanceof Set)v2Seen.clear();
+    if(typeof v2W!=='undefined' && v2W){v2W.go=0;v2W.reset();}
+    if(typeof chS!=='undefined' && chS){chS.go=0;chS.reset();}
+    if(typeof chS!=='undefined')chS=null;
+    if(typeof chi!=='undefined')chi=0;
+    if(typeof chA!=='undefined')chA=0;
+    if(typeof chQ!=='undefined')chQ=[];
+    if(typeof bSec!=='undefined')bSec=0;
+  }catch(e){}
+}
+function openNewMission(){
+  AU.sfx('start');
+  resetForNewMission();
+  $('pg-home').classList.add('hidden');
+  $('pg-reg').classList.remove('hidden');
+  toast('🆕 Misi baru dimulai dari awal. Riwayat sebelumnya telah dihapus.',0,3500);
+}
+function resumeMission(){
+  if(!S.u){openNewMission();return;}
+  AU.sfx('start');
+  $('pg-home').classList.add('hidden');
+  $('pg-reg').classList.add('hidden');
+  enterApp();
+  const target=(S.currentView&&$('view-'+S.currentView))?S.currentView:'beranda';
+  setTimeout(()=>go(target,false),0);
+  toast('↩️ Riwayat ditemukan. Misi dilanjutkan dari progres terakhir.',0,3500);
+}
+function updateHomeAction(){
+  const b=$('homeGo'), n=$('homeNew');
+  if(!b)return;
+  if(S.u){
+    b.textContent='↩️ LANJUTKAN MISI';
+    b.title='Lanjutkan misi dengan seluruh riwayat yang tersimpan';
+    if(n)n.style.display='inline-flex';
+  }else{
+    b.textContent='🚀 MULAI MISI';
+    b.title='Mulai misi baru';
+    if(n)n.style.display='none';
+  }
+}
+$('homeGo').onclick=()=>S.u?resumeMission():openNewMission();
+$('homeNew').onclick=openNewMission;
+updateHomeAction();
  $('regForm').addEventListener('submit',e=>{e.preventDefault();
   const v=['regNama','regKelas','regKel','regGuru'].map(i=>$(i).value.trim());
   if(v.some(x=>!x)){$('regMsg').textContent='⚠️ Lengkapi identitas peneliti terlebih dahulu.';
@@ -1844,7 +1958,7 @@ buildTjAcc($('tjAcc'));
   S.u={nama:v[0],kelas:v[1],kelompok:v[2],guru:v[3]};setFlag('registrasi');save();
   $('regMsg').textContent='✓ Identitas berhasil disimpan. Selamat datang, Peneliti!';$('regMsg').className='regmsg ok';
   AU.sfx('ok');toast('✓ Identitas tersimpan. Selamat datang, <b>'+esc(v[0])+'</b>!');
-  setTimeout(()=>{$('pg-reg').classList.add('hidden');enterApp();},700);});
+  setTimeout(()=>{$('pg-reg').classList.add('hidden');updateHomeAction();enterApp();},700);});
 
 /* ============ NAVIGASI + GERBANG ============ */
 const ORDER=['beranda','petunjuk','tujuan','materi','misi','lab','vis2d','lks','tantangan','evaluasi','hasil','pengembang','referensi'];
@@ -1884,6 +1998,7 @@ function go(v,playSound=true){try{
   $$('.nvi[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view==v));
   closeSb();$('appContent').scrollTop=0;if(playSound)AU.sfx('click');
   curView=v;
+  try{S.currentView=v;save();}catch(e){}
   const passedNote=$('lock-'+v);if(passedNote)passedNote.classList.add('hidden');
   if(v==='beranda')renderBeranda();
   if(v==='misi')refreshMisi();
@@ -1932,14 +2047,31 @@ function doLogout(){
   $('pg-home').classList.remove('hidden');
   try{window.scrollTo(0,0);}catch(e){}
   curView='beranda';
-  if(S.set.music&&AU.mus&&AU.ctx)AU.mus.gain.setTargetAtTime(.5,AU.ctx.currentTime,.6);}
+  updateHomeAction();
+  if(S.set.music&&AU.mus&&AU.ctx)AU.mus.gain.setTargetAtTime(.5,AU.ctx.currentTime,.6);
+}
+function logoutAndSave(){
+  AU.sfx('ok');
+  try{S.currentView='beranda';save();}catch(e){}
+  doLogout();
+  toast('💾 Riwayat disimpan. Kamu dapat melanjutkan misi setelah masuk kembali.',0,4200);
+}
+function logoutAndDelete(){
+  AU.sfx('no');
+  try{localStorage.removeItem(KEY);}catch(e){}
+  S=blank();
+  try{resetForNewMission();}catch(e){}
+  doLogout();
+  updateHomeAction();
+  toast('🗑️ Riwayat dihapus. Registrasi berikutnya akan dimulai dari awal.',0,4200);
+}
 function askLogout(){
   AU.sfx('click');
   if(!S.u){doLogout();return;}
   $('outTitle').textContent='Keluar dari Lab Maya';
-  $('outMsg').textContent='Apakah Anda yakin ingin keluar, '+S.u.nama+'?\n\nSeluruh data pembelajaranmu (identitas, progres, XP, LKS, dan sertifikat) tetap tersimpan dan dapat dilanjutkan kembali.';
-  $('outOk').textContent='🚪 LOGOUT';
-  $('outModal').classList.remove('hidden');}
+  $('outMsg').textContent='Pilih tindakan sebelum keluar.\\n\\n💾 Simpan Riwayat: identitas, progres, XP, LKS, tantangan, evaluasi, dan hasil tetap tersimpan.\\n\\n🗑️ Hapus Riwayat: semua data pembelajaran dihapus dan sesi berikutnya dimulai dari awal.';
+  $('outModal').classList.remove('hidden');
+}
 function endMissionShow(){
   AU.sfx('fin');
   closeSb();
@@ -2625,14 +2757,13 @@ document.addEventListener('click',function(e){
     case 'btnEnd':endMissionShow();break;
     case 'quoteClose':closeQuote();break;
     case 'btnLogout':case 'btnRefLogout':case 'quoteLogout':askLogout();break;
-    case 'outOk':$('outModal').classList.add('hidden');doLogout();
-      AU.sfx('win');
-      toast(S.u?'👋 Sampai jumpa, <b>'+esc(S.u.nama)+'</b>!<br><small>Datamu tetap tersimpan — tekan “🚀 MASUK KE LABORATORIUM” untuk melanjutkan.</small>'
-               :'👋 Terima kasih telah menjelajahi <b>Misi Gelombang</b>!',0,4500);break;
+    case 'outSave':logoutAndSave();break;
+    case 'outDelete':logoutAndDelete();break;
     case 'outCancel':$('outModal').classList.add('hidden');break;
   }});
 
 /* ============ BOOT ============ */
+updateHomeAction();
 hdr();
 try{console.log('%c🌊 MISI GELOMBANG — skrip dimuat sempurna, semua tombol aktif','color:#2fe6c8;font-weight:bold');}catch(e){}
 </script>
