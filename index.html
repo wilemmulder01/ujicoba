@@ -803,201 +803,86 @@ img[src="foto.jpg"],img[src="logo-1.jpg"],img[src="logo-2.jpg"],img[src="logo-3.
 
 </style>
 
-<style id="footer-visibility-fix">
-html{scroll-padding-bottom:120px!important;}
+<style id="final-footer-scroll-fix">
+/* Footer dihilangkan dari UI */
+footer,
+.site-footer,
+.app-footer,
+.page-footer,
+.footer,
+[data-footer]{
+  display:none!important;
+}
+
+/* Scroll halaman: konten panjang tetap dapat digulir.
+   Hindari body terkunci kecuali komponen modal/sidebar sedang aktif. */
+html{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scroll-behavior:smooth;
+}
 body{
   min-height:100vh!important;
-  padding-bottom:0!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
 }
-main,.main,.content,.app,.page,.page-content{
-  overflow:visible!important;
+
+/* Area utama dan halaman/materi panjang */
+main,
+.main,
+.main-content,
+.content,
+.page,
+.page-content,
+.content-area,
+#app,
+#main,
+#content{
+  max-height:none!important;
+  overflow-y:visible;
+  overflow-x:hidden;
 }
-footer{
-  position:relative!important;
-  z-index:100!important;
-  isolation:isolate!important;
-  clear:both!important;
-  width:100%!important;
-  min-height:120px!important;
-  margin-top:48px!important;
-  padding:32px 24px!important;
-  box-sizing:border-box!important;
-  overflow:visible!important;
+
+/* Panel yang memang dapat berisi konten panjang */
+.scrollable,
+.scroll-area,
+.long-content,
+.content-scroll,
+.modal-body,
+.drawer-body{
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
 }
-footer *{
-  position:relative;
-  z-index:101!important;
-}
-footer canvas,
-footer .animation,
-footer .anim,
-footer .floating,
-footer [class*="anim"]{
-  z-index:0!important;
-}
-#app, #root, .app-shell, .layout, .main-layout{
-  min-height:100vh!important;
-}
-@media (max-width:768px){
-  footer{
-    min-height:140px!important;
-    margin-top:40px!important;
-    padding:28px 16px!important;
-  }
+
+/* Pastikan kartu/panel tidak memotong teks panjang */
+.card,.panel,.section,.box,.info-card,.mission-card,
+.experiment-card,.challenge-card,.result-card,.lks-card{
+  max-height:none;
 }
 </style>
 
 
-<style id="developer-photo-fix">
+<style id="developer-photo-fit">
 img[src$="foto-pengembang.jpg"]{
-  display:block!important;
-  width:110px!important;
-  height:110px!important;
-  max-width:110px!important;
-  max-height:110px!important;
   object-fit:cover!important;
   object-position:center!important;
-  border-radius:50%!important;
-  border:3px solid rgba(57,198,232,.65)!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.20)!important;
+  display:block;
 }
 </style>
 
 
-<style id="home-animation-blur-fix">
-/* =========================================================
-   HOME HERO ANIMATION
-   Animasi menjadi dekoratif: blur, opacity rendah,
-   tidak pernah menutupi teks/menu/interaksi.
-   ========================================================= */
-
-/* Lapisan animasi/background umum */
-.home-hero,
-.hero,
-.hero-section,
-.home,
-.home-page,
-.landing,
-.landing-page,
-.start-screen,
-.welcome-screen{
-  position:relative!important;
-  isolation:isolate!important;
-}
-
-/* Canvas animasi pada halaman utama dibuat sebagai background */
-.home-hero canvas,
-.hero canvas,
-.hero-section canvas,
-.home canvas,
-.home-page canvas,
-.landing canvas,
-.landing-page canvas,
-.start-screen canvas,
-.welcome-screen canvas{
-  position:absolute!important;
-  inset:0!important;
+<style id="developer-photo-final">
+img[src="foto-pengembang.jpg"]{
+  display:block!important;
   width:100%!important;
-  height:100%!important;
-  z-index:-2!important;
-  pointer-events:none!important;
-  filter:blur(5px)!important;
-  opacity:.22!important;
-  transform:scale(1.035)!important;
-}
-
-/* Elemen animasi dekoratif yang memakai class animation/particle */
-.home-hero .animation,
-.home-hero .anim,
-.home-hero .particles,
-.home-hero .particle,
-.home-hero .floating,
-.hero .animation,
-.hero .anim,
-.hero .particles,
-.hero .particle,
-.hero .floating,
-.home .animation,
-.home .anim,
-.home .particles,
-.home .particle,
-.home .floating{
-  pointer-events:none!important;
-  z-index:-1!important;
-  filter:blur(4px)!important;
-  opacity:.20!important;
-}
-
-/* Semua konten utama berada di atas animasi */
-.home-hero > :not(canvas),
-.hero > :not(canvas),
-.hero-section > :not(canvas),
-.home > :not(canvas),
-.home-page > :not(canvas),
-.landing > :not(canvas),
-.landing-page > :not(canvas),
-.start-screen > :not(canvas),
-.welcome-screen > :not(canvas){
-  position:relative!important;
-  z-index:2!important;
-}
-
-/* Teks hero harus selalu tajam */
-.home-hero h1,.home-hero h2,.home-hero h3,.home-hero p,
-.hero h1,.hero h2,.hero h3,.hero p,
-.hero-section h1,.hero-section h2,.hero-section h3,.hero-section p,
-.home h1,.home h2,.home h3,.home p,
-.home-page h1,.home-page h2,.home-page h3,.home-page p,
-.landing h1,.landing h2,.landing h3,.landing p,
-.start-screen h1,.start-screen h2,.start-screen h3,.start-screen p{
-  position:relative!important;
-  z-index:5!important;
-  filter:none!important;
-}
-
-/* Menu/header selalu paling atas */
-header,.topbar,.app-header,.site-header,
-nav,.navbar,.sidebar,.side-nav,.drawer{
-  position:relative!important;
-  z-index:1000!important;
-}
-
-/* Tombol dan menu tidak boleh terkena animasi */
-button,.btn,.nav-btn,.nav-item,[data-nav],
-.hamburger,.menu-toggle{
-  position:relative!important;
-  z-index:1001!important;
-  pointer-events:auto!important;
-}
-
-/* Jika ada overlay animasi full-screen, jadikan benar-benar non-interaktif */
-.home-animation,
-.hero-animation,
-.background-animation,
-.animation-bg,
-.bg-animation,
-.particle-bg,
-.wave-bg{
-  pointer-events:none!important;
-  z-index:-2!important;
-  filter:blur(5px)!important;
-  opacity:.18!important;
-}
-
-/* Mobile: sedikit lebih ringan agar teks makin jelas */
-@media(max-width:768px){
-  .home-hero canvas,
-  .hero canvas,
-  .hero-section canvas,
-  .home canvas,
-  .home-page canvas,
-  .landing canvas,
-  .landing-page canvas,
-  .start-screen canvas,
-  .welcome-screen canvas{
-    filter:blur(4px)!important;
-    opacity:.14!important;
-  }
+  max-width:420px!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  margin:0 auto!important;
+  border-radius:22px!important;
 }
 </style>
 
@@ -1053,7 +938,7 @@ button,.btn,.nav-btn,.nav-item,[data-nav],
       <button class="btn" id="homePnd">📖 PANDUAN PENGGUNAAN</button>
       <button class="btn pri" id="homeGo">🚀 MASUK KE LABORATORIUM</button>
     </div>
-    <div class="hmeta">Dikembangkan oleh Wilem Rilexen S P Mulder, S.Pd., M.Pd., Gr — SMP Negeri 65 Maluku Tengah</div>
+    <div class="hmeta"></div>
   </div>
   <div class="ovl hidden" id="ovTj"><div class="ovlc">
     <div class="vT" style="font-size:21px">🎯 Tujuan Pembelajaran</div>
@@ -1540,55 +1425,100 @@ try{const r=localStorage.getItem(KEY);
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
 
 /* ============ AUDIO ============ */
-const AU={ctx:null,
-  init(){try{
-    if(this.ctx){if(this.ctx.state=='suspended')this.ctx.resume();return;}
-    const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
-    this.ctx=new C();
-    this.master=this.ctx.createGain();this.master.gain.value=S.set.vol;this.master.connect(this.ctx.destination);
-    this.mus=this.ctx.createGain();this.mus.gain.value=S.set.music?.5:0;this.mus.connect(this.master);
-    this.fx=this.ctx.createGain();this.fx.gain.value=S.set.sfx?1:0;this.fx.connect(this.master);
-    this.seq();
-  }catch(e){}},
-  t(f0,f1,d,type,vol,at,dest){if(!this.ctx)return;
-    const t0=this.ctx.currentTime+(at||0),o=this.ctx.createOscillator(),g=this.ctx.createGain();
-    o.type=type;o.frequency.setValueAtTime(f0,t0);
+const AU={ctx:null,master:null,mus:null,fx:null,_unlocking:false,
+  init(){
+    try{
+      if(this.ctx){
+        if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{});
+        return this.ctx;
+      }
+      const C=window.AudioContext||window.webkitAudioContext;
+      if(!C)return null;
+      this.ctx=new C();
+      this.master=this.ctx.createGain();
+      this.master.gain.value=Math.max(0,Math.min(1,Number(S.set.vol)||.5));
+      this.master.connect(this.ctx.destination);
+      this.mus=this.ctx.createGain();
+      this.mus.gain.value=S.set.music?.5:0;
+      this.mus.connect(this.master);
+      this.fx=this.ctx.createGain();
+      this.fx.gain.value=S.set.sfx?1:0;
+      this.fx.connect(this.master);
+      this.seq();
+      if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{});
+      return this.ctx;
+    }catch(e){return null;}
+  },
+  unlock(){
+    try{
+      const c=this.init();
+      if(c&&c.state==='suspended')c.resume().catch(()=>{});
+    }catch(e){}
+  },
+  t(f0,f1,d,type,vol,at,dest){
+    if(!this.ctx||this.ctx.state==='suspended')return;
+    const t0=this.ctx.currentTime+(at||0);
+    const o=this.ctx.createOscillator(),g=this.ctx.createGain();
+    o.type=type;
+    o.frequency.setValueAtTime(f0,t0);
     if(f1&&f1!==f0)o.frequency.exponentialRampToValueAtTime(Math.max(30,f1),t0+d);
-    g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(vol,t0+.02);
+    g.gain.setValueAtTime(.0001,t0);
+    g.gain.exponentialRampToValueAtTime(vol,t0+.02);
     g.gain.exponentialRampToValueAtTime(.0001,t0+d);
-    o.connect(g);g.connect(dest||this.fx);o.start(t0);o.stop(t0+d+.05);},
-  sfx(n){try{
-    this.init();
-    if(!S.set.sfx||!this.ctx)return;
+    o.connect(g);g.connect(dest||this.fx);
+    o.start(t0);o.stop(t0+d+.05);
+  },
+  _playSfx(n){
+    if(!this.ctx||!S.set.sfx)return;
     const F=(a,b,c,d,e,w)=>this.t(a,b,c,d,e,w,this.fx);
-    if(n=='click')F(700,520,.07,'sine',.3);
-    else if(n=='menu'){
-      F(620,820,.07,'sine',.24);
-      F(820,1040,.08,'sine',.18,.07);
+    if(n==='click')F(700,520,.075,'sine',.3);
+    else if(n==='menu'){
+      F(620,820,.075,'sine',.24);
+      F(820,1040,.09,'sine',.18,.075);
     }
-    else if(n=='start')F(440,880,.18,'triangle',.45);
-    else if(n=='ok'){F(660,660,.1,'sine',.45);F(990,990,.16,'sine',.45,.1);}
-    else if(n=='no')F(300,170,.28,'sawtooth',.25);
-    else if(n=='win'){F(523,523,.1,'triangle',.45);F(659,659,.1,'triangle',.45,.11);F(784,784,.22,'triangle',.45,.22);}
-    else if(n=='badge'){F(784,784,.08,'sine',.4);F(1046,1046,.08,'sine',.4,.09);F(1318,1318,.2,'sine',.4,.18);}
-    else if(n=='fin'){F(392,392,.14,'triangle',.42);F(494,494,.14,'triangle',.42,.15);
+    else if(n==='start')F(440,880,.18,'triangle',.45);
+    else if(n==='ok'){F(660,660,.1,'sine',.45);F(990,990,.16,'sine',.45,.1);}
+    else if(n==='no')F(300,170,.28,'sawtooth',.25);
+    else if(n==='win'){F(523,523,.1,'triangle',.45);F(659,659,.1,'triangle',.45,.11);F(784,784,.22,'triangle',.45,.22);}
+    else if(n==='badge'){F(784,784,.08,'sine',.4);F(1046,1046,.08,'sine',.4,.09);F(1318,1318,.2,'sine',.4,.18);}
+    else if(n==='fin'){F(392,392,.14,'triangle',.42);F(494,494,.14,'triangle',.42,.15);
       F(587,587,.16,'triangle',.42,.3);F(784,784,.4,'triangle',.45,.48);}
-  }catch(e){}},
+  },
+  sfx(n){
+    try{
+      if(!S.set.sfx)return;
+      const c=this.init();
+      if(!c)return;
+      if(c.state==='suspended'){
+        c.resume().then(()=>this._playSfx(n)).catch(()=>{});
+      }else{
+        this._playSfx(n);
+      }
+    }catch(e){}
+  },
   seq(){if(this._sq||!this.ctx)return;
     const CH=[[262,330,392,523],[196,247,294,392],[220,262,330,440],[175,220,262,349]];
     const PAT=[0,2,1,3,2,1,3,2],SPB=60/112/2;
     let next=this.ctx.currentTime+.1,step=0;
     this._sq=setInterval(()=>{try{
+      if(!this.ctx||this.ctx.state!=='running')return;
       while(next<this.ctx.currentTime+.25){
         const st=step%8,bar=Math.floor(step/8)%4,ch=CH[bar],at=next-this.ctx.currentTime;
         this.t(ch[PAT[st]],0,.22,'triangle',.15,at,this.mus);
-        if(st==0)this.t(ch[0]/2,0,SPB*7.5,'sine',.18,at,this.mus);
-        if(st%4==2)this.t(ch[3]*2,0,.05,'sine',.04,at,this.mus);
-        next+=SPB;step++;}}catch(e){}},80);},
+        if(st===0)this.t(ch[0]/2,0,SPB*7.5,'sine',.18,at,this.mus);
+        if(st%4===2)this.t(ch[3]*2,0,.05,'sine',.04,at,this.mus);
+        next+=SPB;step++;
+      }
+    }catch(e){}},80);},
   vol(v){S.set.vol=v;if(this.master)this.master.gain.value=v;save();},
   music(on){S.set.music=on;if(this.mus)this.mus.gain.value=on?.5:0;save();},
-  sfxOn(on){S.set.sfx=on;if(this.fx)this.fx.gain.value=on?1:0;save();}};
-document.addEventListener('pointerdown',()=>{try{AU.init();}catch(e){}},{once:true});
+  sfxOn(on){S.set.sfx=on;if(this.fx)this.fx.gain.value=on?1:0;save();}
+};
+
+/* Unlock audio as early as possible from a real user gesture.
+   This fixes browsers that keep Web Audio suspended until interaction. */
+document.addEventListener('pointerdown',()=>AU.unlock(),{capture:true,passive:true});
+document.addEventListener('keydown',()=>AU.unlock(),{capture:true,passive:true});
 
 /* Suara getaran (demo intensitas bunyi) */
 const Tone={o:null,g:null,cur:null,
@@ -1898,7 +1828,7 @@ function enterApp(){$('pg-app').classList.remove('hidden');hdr();refreshLocks();
     try{wireHeader();}catch(e){err(e);}
     try{navFoot();}catch(e){err(e);}}
   go('beranda');}
-function go(v){try{
+function go(v,playSound=true){try{
   if(!v||!$('view-'+v))return;
   const gate=GATE[v];
   if(gate&&!gate.c()){
@@ -1912,7 +1842,7 @@ function go(v){try{
   $$('#appContent .view').forEach(s=>s.classList.add('hidden'));
   $('view-'+v).classList.remove('hidden');
   $$('.nvi[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view==v));
-  closeSb();$('appContent').scrollTop=0;AU.sfx('click');
+  closeSb();$('appContent').scrollTop=0;if(playSound)AU.sfx('click');
   curView=v;
   const passedNote=$('lock-'+v);if(passedNote)passedNote.classList.add('hidden');
   if(v==='beranda')renderBeranda();
@@ -2030,6 +1960,7 @@ function renderBeranda(){const u=S.u;
     '<div class="mrow2"><span class="num">'+(i+1)+'</span><span>'+it[0]+'</span><span class="st '+(it[1]?'done':'')+'">'+(it[1]?'✓ +'+it[2]+'%':'BELUM (+'+it[2]+'%)')+'</span></div>').join('');
   const p=prog();$('berRing').style.strokeDashoffset=314-314*p/100;$('berRingTxt').textContent=p+'%';}
  $('btnLanjut').onclick=()=>{
+  AU.sfx('click');
   const o=[
     ['tujuan','tujuan'],['materi','materi'],['misi','misi'],
     ['eksT','lab'],['eksL','lab'],['banding','lab'],
