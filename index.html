@@ -1039,6 +1039,28 @@ main [data-nav]::after,
 /* This build preserves Resume & History. Printing changes are print-only. */
 </style>
 
+<style id="logout-responsive-final-fix">
+#outModal{z-index:99999!important;pointer-events:auto!important}
+#outModal .modal{position:relative!important;z-index:100000!important;pointer-events:auto!important}
+#outModal .mbtns{position:relative!important;z-index:100001!important}
+#outModal #outSave,#outModal #outDelete,#outModal #outCancel{
+  position:relative!important;z-index:100002!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-height:46px!important;
+  pointer-events:auto!important;touch-action:manipulation!important;cursor:pointer!important;
+}
+@media(max-width:640px){
+  #outModal{padding:12px!important}
+  #outModal .modal{max-width:calc(100vw - 24px)!important}
+  #outModal .mbtns{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+}
+</style>
+
+<style>
+.berProgressWrap{align-items:center;gap:20px}
+.berProgressRing{width:168px;height:168px;flex:0 0 168px;filter:drop-shadow(0 0 10px rgba(47,230,200,.16))}
+@media(max-width:700px){.berProgressWrap{flex-direction:column;text-align:center}.berProgressRing{width:150px;height:150px;flex-basis:150px}}
+</style>
 </head>
 <body>
 
@@ -1178,12 +1200,12 @@ main [data-nav]::after,
         <div class="grid2" style="margin-top:16px">
           <div class="card"><h3>🎯 MISI ANDA</h3><div id="berMisi"></div></div>
           <div class="card"><h3>📊 PROGRES PEMBELAJARAN</h3>
-            <div class="rw">
-              <svg width="120" height="120" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="11"/>
-                <circle id="berRing" cx="60" cy="60" r="50" fill="none" stroke="#2fe6c8" stroke-width="11" stroke-linecap="round"
-                  stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .6s"/>
-                <text id="berRingTxt" x="60" y="67" text-anchor="middle" fill="#e8f4f6" font-size="21" font-family="Chakra Petch" font-weight="700">0%</text>
+            <div class="rw berProgressWrap">
+              <svg class="berProgressRing" width="168" height="168" viewBox="0 0 168 168" aria-label="Progres pembelajaran">
+                <circle cx="84" cy="84" r="70" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="14"/>
+                <circle id="berRing" cx="84" cy="84" r="70" fill="none" stroke="#2fe6c8" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="439.82" stroke-dashoffset="439.82" transform="rotate(-90 84 84)" style="transition:stroke-dashoffset .6s"/>
+                <text id="berRingTxt" x="84" y="93" text-anchor="middle" fill="#e8f4f6" font-size="30" font-family="Chakra Petch" font-weight="700">0%</text>
               </svg>
               <div class="muted">Progres bertambah <b>hanya</b> saat sebuah tahap benar-benar diselesaikan. Setiap tahap terbuka berurutan setelah tahap sebelumnya benar-benar selesai. Menu terkunci tetap dapat diklik untuk melihat syaratnya. Akhiri perjalananmu di menu <b>📚 Referensi</b>.</div>
             </div>
@@ -2183,7 +2205,7 @@ function renderBeranda(){const u=S.u;
     ['Menyelesaikan evaluasi',S.f.evaluasi,20]];
   $('berMisi').innerHTML=items.map((it,i)=>
     '<div class="mrow2"><span class="num">'+(i+1)+'</span><span>'+it[0]+'</span><span class="st '+(it[1]?'done':'')+'">'+(it[1]?'✓ +'+it[2]+'%':'BELUM (+'+it[2]+'%)')+'</span></div>').join('');
-  const p=prog();$('berRing').style.strokeDashoffset=314-314*p/100;$('berRingTxt').textContent=p+'%';}
+  const p=prog();$('berRing').style.strokeDashoffset=439.82-439.82*p/100;$('berRingTxt').textContent=p+'%';}
  $('btnLanjut').onclick=()=>{
   AU.sfx('click');
   const o=[
@@ -2813,7 +2835,7 @@ function certPrint(){const u=S.u,p=prog(),sk=S.ev?S.ev.best:0,kat=kategori(sk);
 
 /* ============ DELEGASI GLOBAL: semua tombol keluar & akhiri misi ============ */
 document.addEventListener('click',function(e){
-  const t=(e.target&&e.target.closest)?e.target.closest('#btnLogout,#btnRefLogout,#btnEnd,#quoteLogout,#quoteClose,#outOk,#outCancel'):null;
+  const t=(e.target&&e.target.closest)?e.target.closest('#btnLogout,#btnRefLogout,#btnEnd,#quoteLogout,#quoteClose,#outSave,#outDelete,#outCancel'):null;
   if(!t)return;
   switch(t.id){
     case 'btnEnd':endMissionShow();break;
@@ -2830,5 +2852,41 @@ hdr();
 try{console.log('%c🌊 MISI GELOMBANG — skrip dimuat sempurna, semua tombol aktif','color:#2fe6c8;font-weight:bold');}catch(e){}
 </script>
 <script>window.addEventListener("afterprint",()=>document.documentElement.classList.remove("printing-lks"));</script>
+
+<script id="logout-direct-fallback">
+(function(){
+  function bindLogoutButtons(){
+    const saveBtn=document.getElementById('outSave');
+    const delBtn=document.getElementById('outDelete');
+    const cancelBtn=document.getElementById('outCancel');
+    if(saveBtn && !saveBtn.dataset.boundFinal){
+      saveBtn.dataset.boundFinal='1';
+      saveBtn.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        if(typeof logoutAndSave==='function')logoutAndSave();
+      },true);
+    }
+    if(delBtn && !delBtn.dataset.boundFinal){
+      delBtn.dataset.boundFinal='1';
+      delBtn.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        if(typeof logoutAndDelete==='function')logoutAndDelete();
+      },true);
+    }
+    if(cancelBtn && !cancelBtn.dataset.boundFinal){
+      cancelBtn.dataset.boundFinal='1';
+      cancelBtn.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        const m=document.getElementById('outModal');if(m)m.classList.add('hidden');
+      },true);
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindLogoutButtons);
+  else bindLogoutButtons();
+  const mo=new MutationObserver(bindLogoutButtons);
+  mo.observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
