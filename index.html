@@ -1,3 +1,68 @@
+
+
+Pasted text(7).txt
+Document
+tolong Perbaiki kode ini dengan menambahkan langkah eksperimen pada menu Menyelidiki gelombang transversal, Menu Menyelidiki gelombang longitudinal dan menu Membandingkan kedua gelombang. sehingga user paham apa yang akan dilakukan step by step
+
+Sudah saya perbaiki langsung pada kode yang Anda kirim. Struktur eksperimen yang sudah ada tetap dipertahankan—termasuk pengukuran λ, stopwatch, perekaman otomatis ke LKS, sistem penguncian tahap, dan progres misi. 
+
+
+Perbaikan yang ditambahkan
+1. Eksperimen 01 — Gelombang Transversal
+
+Panduan visual LANGKAH 1 → 5
+
+01 Kenali objek/tali
+
+02 Jalankan simulasi minimal 5 detik
+
+03 Ukur panjang gelombang λ
+
+04 Hitung frekuensi dengan stopwatch
+
+05 Periksa v = λ × f dan rekam data
+
+Ditambahkan fokus pengamatan: arah getaran partikel vs arah rambat
+
+2. Eksperimen 02 — Gelombang Longitudinal
+
+Panduan langkah yang sama tetapi disesuaikan dengan pegas/slinky
+
+Siswa diarahkan mencari dua rapatan berurutan untuk menentukan λ
+
+Siswa diarahkan mengamati gerak maju–mundur partikel
+
+Sistem tetap menggunakan syarat eksperimen yang sudah ada. 
+
+
+3. Menu Membandingkan Kedua Gelombang
+Sekarang ada alur:
+
+Jalankan bersama
+
+Amati arah getaran
+
+Bandingkan dengan arah rambat
+
+Periksa pola dan selesaikan
+
+Saya juga menambahkan pertanyaan kunci agar siswa menemukan sendiri bahwa perbedaan utama adalah hubungan arah getaran terhadap arah rambat. Ini konsisten dengan materi yang sudah ada di kode. 
+
+
+4. Tampilan dibuat seperti "laboratory procedure"
+Jadi siswa tidak langsung berhadapan dengan banyak tombol tanpa tahu harus mulai dari mana. Panduan muncul sebelum canvas eksperimen, kemudian kontrol dan pengukuran tetap berada di bawahnya.
+
+5. Tidak mengubah sistem data
+Hasil eksperimen tetap otomatis masuk ke LKS ketika siswa menekan tombol REKAM DATA & SELESAIKAN, sebagaimana mekanisme asli kode. 
+
+
+File versi diperbaiki
+Buka/Download Lab Maya Misi Gelombang v2 — HTML siap digunakan
+
+Download kode versi TXT
+
+Saya juga sudah melakukan JavaScript syntax check, dan kode utama lolos pemeriksaan tanpa error sintaks.
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -387,6 +452,34 @@ background:radial-gradient(500px 220px at 50% 0%,rgba(47,230,200,.07),transparen
   }
   #printArea .ttd .nm{font-weight:700!important;text-decoration:underline!important}
 }
+
+/* --- STEP-BY-STEP EXPERIMENT GUIDE --- */
+.expGuide{margin:0 0 16px;padding:16px;border:1px solid rgba(72,245,208,.16);border-radius:16px;background:linear-gradient(145deg,rgba(72,245,208,.055),rgba(101,184,255,.035));box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.expGuideHead{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.expGuideHead .egIcon{font-size:22px;line-height:1}
+.expGuideHead h4{font-family:var(--fd);font-size:14px;letter-spacing:.6px;color:var(--teal);margin:0 0 3px}
+.expGuideHead p{font-size:11.5px;color:var(--tx2);line-height:1.55}
+.expSteps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.expStep{position:relative;min-height:112px;padding:11px 10px 10px;border:1px solid rgba(157,188,255,.12);border-radius:12px;background:rgba(3,8,21,.36)}
+.expStep .esn{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:8px;background:rgba(72,245,208,.09);border:1px solid rgba(72,245,208,.22);color:var(--teal);font-family:var(--fd);font-size:11px;font-weight:700;margin-bottom:8px}
+.expStep b{display:block;font-size:11.5px;margin-bottom:4px;color:var(--tx)}
+.expStep p{font-size:10.5px;color:var(--tx2);line-height:1.5}
+.expStep .tag2{display:inline-block;margin-top:7px;font-size:9px;letter-spacing:.4px;color:var(--amber);border:1px solid rgba(255,209,102,.18);border-radius:99px;padding:3px 6px}
+.expGoal{margin-top:10px;padding:9px 11px;border-radius:10px;background:rgba(255,209,102,.045);border:1px dashed rgba(255,209,102,.18);font-size:11px;line-height:1.55;color:var(--tx2)}
+.expGoal b{color:var(--amber)}
+.expFinishHint{margin-top:10px;padding:10px 12px;border-radius:11px;background:rgba(101,184,255,.045);border:1px solid rgba(101,184,255,.12);font-size:11px;color:var(--tx2);line-height:1.55}
+.expFinishHint b{color:var(--blue)}
+.compareGuide{margin:0 0 16px;padding:16px;border:1px solid rgba(255,209,102,.17);border-radius:16px;background:linear-gradient(145deg,rgba(255,209,102,.05),rgba(157,124,255,.035))}
+.compareGuide .expGuideHead h4{color:var(--amber)}
+.compareSteps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.compareStep{padding:11px;border:1px solid rgba(157,188,255,.12);border-radius:12px;background:rgba(3,8,21,.34)}
+.compareStep .esn{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:8px;background:rgba(255,209,102,.09);border:1px solid rgba(255,209,102,.22);color:var(--amber);font-family:var(--fd);font-size:11px;font-weight:700;margin-bottom:8px}
+.compareStep b{display:block;font-size:11.5px;margin-bottom:4px}.compareStep p{font-size:10.5px;color:var(--tx2);line-height:1.5}
+.comparePrompt{margin-top:10px;padding:10px 12px;border-radius:10px;background:rgba(72,245,208,.045);border:1px dashed rgba(72,245,208,.18);font-size:11px;color:var(--tx2);line-height:1.55}
+.comparePrompt b{color:var(--teal)}
+@media (max-width:900px){.expSteps{grid-template-columns:repeat(2,minmax(0,1fr))}.compareSteps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.expSteps,.compareSteps{grid-template-columns:1fr}.expStep{min-height:auto}}
+
 @media (max-width:1024px){
 #sidebar{position:fixed;left:0;top:0;bottom:0;transform:translateX(-105%);transition:transform .28s}
 #sidebar.open{transform:none;box-shadow:30px 0 80px rgba(0,0,0,.6)}
@@ -1329,7 +1422,7 @@ main [data-nav]::after,
         <div class="locknote hidden" id="lock-lab"></div>
         <div class="lockbody" id="body-lab">
         <div class="vT">🧪 LABORATORIUM</div>
-        <p class="vS">Animasi 2D di atas, semua kontrol di bawahnya. <b>Geser slider → BENTUK gelombang langsung berubah mengikuti</b>. Tekan <b>▶ MULAI</b> agar gelombang merambat. Tekan <b>✓ REKAM DATA & SELESAIKAN</b> — hasil eksperimenmu otomatis terekam ke LKS. Ulangi sebanyak yang kamu butuhkan!</p>
+        <p class="vS">Ikuti eksperimen secara berurutan: <b>01 Transversal → 02 Longitudinal → 03 Bandingkan</b>. Di setiap eksperimen, baca panduan langkah demi langkah, amati animasi, ukur λ, hitung f, cek v = λ × f, lalu rekam data ke LKS. Kamu boleh mengulang pengukuran kapan saja.</p>
         <div class="ltabs" id="labTabs">
           <button class="ltab active" data-tab="t">🔵 EKSPERIMEN 01 · TRANSVERSAL</button>
           <button class="ltab ambt" data-tab="l">🟠 EKSPERIMEN 02 · LONGITUDINAL</button>
@@ -1339,6 +1432,17 @@ main [data-nav]::after,
         <div id="labPanes"></div>
         <div class="view hidden" id="pane-banding">
           <div class="lhead"><b>⚖️ MODE PERBANDINGAN</b><span class="obj">KEDUA GELOMBANG BERJALAN BERSAMAAN</span></div>
+          <div class="compareGuide">
+            <div class="expGuideHead"><span class="egIcon">⚖️</span><div><h4>URUTAN MEMBANDINGKAN · IKUTI LANGKAH 1 → 4</h4>
+              <p>Di sini tujuanmu bukan menghafal tabel, tetapi menemukan perbedaannya dari hasil pengamatan langsung.</p></div></div>
+            <div class="compareSteps">
+              <div class="compareStep"><div class="esn">01</div><b>Jalankan bersama</b><p>Tekan <b>▶ JALANKAN BERSAMA</b> agar tali dan pegas bergerak pada waktu yang sama.</p></div>
+              <div class="compareStep"><div class="esn">02</div><b>Amati arah getaran</b><p>Perhatikan partikel pada kedua medium. Catat: apakah geraknya <b>naik-turun</b> atau <b>maju-mundur</b>?</p></div>
+              <div class="compareStep"><div class="esn">03</div><b>Bandingkan dengan arah rambat</b><p>Gunakan panah dan pola pada layar. Tentukan apakah arah getaran terhadap arah rambat <b>tegak lurus</b> atau <b>sejajar</b>.</p></div>
+              <div class="compareStep"><div class="esn">04</div><b>Gunakan tabel & selesaikan</b><p>Periksa pola <b>puncak-lembah</b> versus <b>rapatan-renggangan</b>, lalu tekan tombol selesai setelah pengamatanmu cukup.</p></div>
+            </div>
+            <div class="comparePrompt"><b>🔎 Pertanyaan kunci:</b> Jika arah rambat keduanya sama-sama ke kanan, apa yang berbeda pada arah gerak partikelnya? Itulah kunci untuk membedakan kedua jenis gelombang.</div>
+          </div>
           <div class="grid2">
             <div class="card"><h3 style="color:var(--teal)">TRANSVERSAL · GETARAN ↑↓ · RAMBAT →→→</h3><canvas class="simcv h210" id="bCvT"></canvas></div>
             <div class="card"><h3 style="color:var(--amber)">LONGITUDINAL · GETARAN ←→ · RAMBAT →→→</h3><canvas class="simcv h210" id="bCvL"></canvas></div>
@@ -2301,10 +2405,29 @@ function recordData(k){
     return true;
   }catch(e){err(e);return false;}}
 /* Dibangun dengan penggabungan string (tanpa backtick) agar tahan salin-tempel */
+function expGuideHTML(c){
+  const isT=c.type=='T';
+  const obj=isT?'tali':'pegas/slinky';
+  const ciri=isT?'puncak dan lembah':'rapatan dan renggangan';
+  const ukur=isT?'jarak dua puncak berurutan':'jarak dua rapatan berurutan';
+  return '<div class="expGuide">'
+    +'<div class="expGuideHead"><span class="egIcon">🧭</span><div><h4>URUTAN EKSPERIMEN · IKUTI LANGKAH 1 → 5</h4>'
+    +'<p>Kamu tidak perlu menebak tombol mana yang harus ditekan. Ikuti urutan berikut. Setiap tahap menjelaskan apa yang harus diamati dan apa yang harus dilakukan.</p></div></div>'
+    +'<div class="expSteps">'
+    +'<div class="expStep"><div class="esn">01</div><b>Kenali objek</b><p>Amati '+obj+' virtual. Aktifkan <b>ARAH GETARAN</b> dan <b>'+ciri.toUpperCase()+'</b> agar cirinya terlihat.</p><span class="tag2">AMATI</span></div>'
+    +'<div class="expStep"><div class="esn">02</div><b>Jalankan gelombang</b><p>Tekan <b>▶ MULAI</b>. Biarkan bergerak minimal <b>5 detik</b> sambil memperhatikan arah getaran partikel dan arah rambat.</p><span class="tag2">≥ 5 DETIK</span></div>'
+    +'<div class="expStep"><div class="esn">03</div><b>Ukur panjang gelombang</b><p>Aktifkan <b>📏 PENGUKURAN</b>. Geser A dan B sehingga mencakup '+ukur+'. Nilai jaraknya adalah <b>λ</b>.</p><span class="tag2">UKUR λ</span></div>'
+    +'<div class="expStep"><div class="esn">04</div><b>Ukur frekuensi</b><p>Buka <b>⏱️ STOPWATCH</b>. Jalankan, hitung jumlah getaran lengkap (<b>n</b>), lalu masukkan n. Sistem menghitung <b>f = n/t</b>.</p><span class="tag2">HITUNG f</span></div>'
+    +'<div class="expStep"><div class="esn">05</div><b>Periksa & rekam</b><p>Cek <b>v = λ × f</b>. Jika tiga syarat terpenuhi, tombol <b>REKAM DATA & SELESAIKAN</b> aktif. Tekan untuk menyimpan hasil ke LKS.</p><span class="tag2">REKAM DATA</span></div>'
+    +'</div>'
+    +'<div class="expGoal"><b>🎯 Fokus pengamatan:</b> '+(isT?'apakah partikel bergerak naik-turun sementara pola gelombang merambat mendatar?':'apakah partikel bergerak maju-mundur sementara pola rapatan dan renggangan merambat?')+' Jangan hanya melihat bentuknya—perhatikan <b>arah gerak partikel</b> terhadap <b>arah rambat</b>.</div>'
+    +'<div class="expFinishHint">💡 <b>Setelah selesai:</b> data otomatis masuk ke LKS Digital. Kamu boleh mengubah amplitudo, frekuensi, atau panjang gelombang lalu mengulang pengukuran untuk memperoleh beberapa data pembanding.</div>'
+    +'</div>';
+}
 function paneHTML(c){const p=c.pfx;
   const mark=c.type=='T'?'PUNCAK & LEMBAH':'RAPATAN & RENGGANGAN';
   const rulHint=c.type=='T'?'dua puncak berurutan':'dua rapatan berurutan';
-  return '<div class="lhead"><b>'+c.title+'</b><span class="obj">OBJEK: '+c.obj+'</span></div>'
+  return expGuideHTML(c)+'<div class="lhead"><b>'+c.title+'</b><span class="obj">OBJEK: '+c.obj+'</span></div>'
   +'<canvas class="simcv" id="'+p+'Cv"></canvas>'
   +'<div class="statline" id="'+p+'Stat">🧊 BENTUK STATIS — geser slider untuk mengubah bentuk · tekan ▶ MULAI agar gelombang merambat</div>'
   +'<div class="hint">📏 Aktifkan <b>PENGUKURAN</b> lalu geser penanda <b class="hl">A</b> dan <b class="ha">B</b>: jarak '+rulHint+' = <b>λ</b>. Garis amplop <b class="hl">+A / −A</b> = simpangan maksimum.</div>'
@@ -2921,3 +3044,17 @@ try{console.log('%c🌊 MISI GELOMBANG — skrip dimuat sempurna, semua tombol a
 
 </body>
 </html>
+
+Lab_Maya_Misi_Gelombang_v2.html
+HTML
+
+
+Lab_Maya_Misi_Gelombang_v2.txt
+Document
+
+Create richer images from your files
+Upgrade to transform your uploaded files and images with more precision, consistency, and detail using increased reasoning.
+
+Get Plus
+
+
